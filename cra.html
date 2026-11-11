@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C.R.A. | Colegio José Manuel Balmaceda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-principal:#1f3a5f;
+      --color-oscuro:#14283f;
+      --color-acento:#e6b84a;
+      --color-suave:#eef2f7;
+      --texto:#1b2430;
+      --borde:#d9dee5;
+      --fondo-alt:#f4f6f9;
+      --blanco:#ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--texto);
+      background: #fff;
+    }
+    a { color: var(--color-principal); }
+    a:hover { color: var(--color-oscuro); }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .top { background: var(--color-oscuro); color: #fff; font-size: 15px; }
+    .top .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: flex-end; padding-top: 10px; padding-bottom: 10px; }
+    .top a { color: #fff; text-decoration: none; }
+    header { border-bottom: 1px solid var(--borde); background: #fff; }
+    header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-top: 14px; padding-bottom: 14px; }
+    .marca { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--color-oscuro); font-family: 'Merriweather', Georgia, serif; font-weight: 700; font-size: 20px; line-height: 1.2; }
+    .marca small { display: block; font-family: 'Nunito Sans', Arial, sans-serif; font-weight: 600; font-size: 14px; }
+    .marca .foto { width: 60px; height: 60px; border-radius: 12px; overflow: hidden; border: 2px solid var(--borde); background: var(--color-suave); }
+    .marca .foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .menu { display: flex; flex-wrap: wrap; gap: 4px; list-style: none; margin: 0; padding: 0; }
+    .menu a { display: block; padding: 12px 14px; text-decoration: none; font-weight: 600; color: var(--texto); border-radius: 8px; }
+    .menu a:hover, .menu a:focus { background: var(--color-suave); }
+    .menu .destacado { background: var(--color-acento); color: var(--color-oscuro); border-radius: 8px; }
+    h1, h2, h3 { font-family: 'Merriweather', Georgia, serif; }
+    h1 { margin: 0 0 16px; font-size: clamp(2.4rem, 5vw, 4rem); color: var(--color-oscuro); }
+    h2 { font-size: 32px; margin: 0 0 14px; color: var(--color-oscuro); }
+    .hero { background: linear-gradient(135deg, var(--color-principal), #294b76 55%, #1d3557); color: #fff; padding: 72px 0; }
+    .hero .wrap { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 36px; align-items: center; }
+    .hero p { margin: 0 0 26px; font-size: 1.18rem; color: #edf3ff; }
+    .btns { display: flex; flex-wrap: wrap; gap: 14px; }
+    .btn { display: inline-block; padding: 14px 24px; border-radius: 12px; font-weight: 800; text-decoration: none; }
+    .btn-acento { background: var(--color-acento); color: var(--color-oscuro); }
+    .btn-light { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.25); }
+    .hero-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 18px;
+      padding: 24px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 20px 35px rgba(0,0,0,0.18);
+    }
+    .hero-card strong { display: block; margin-bottom: 12px; font-size: 1.05rem; letter-spacing: .05em; text-transform: uppercase; }
+    .hero-card ul { margin: 0; padding-left: 18px; color: #edf3ff; }
+    .hero-card li { margin-bottom: 12px; }
+    section { padding: 64px 0; }
+    .alt { background: var(--fondo-alt); }
+    .lead { font-size: 1.08rem; max-width: 840px; margin: 0 0 20px; }
+    .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .card {
+      background: #fff;
+      border: 1px solid var(--borde);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 12px 24px rgba(20,40,63,.06);
+    }
+    .card h3 { margin: 0 0 10px; font-size: 1.2rem; color: var(--color-oscuro); }
+    .stamp {
+      display: inline-block;
+      background: var(--color-suave);
+      color: var(--color-oscuro);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .feature-box {
+      background: linear-gradient(180deg, #fff, #f7f9fc);
+      border: 1px solid var(--borde);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 10px 26px rgba(20,40,63,.05);
+    }
+    .feature-box p { margin: 0; }
+    .cta { background: linear-gradient(135deg, var(--color-acento), #f3c65f); padding: 30px; border-radius: 18px; border: 1px solid rgba(0,0,0,0.04); }
+    .cta a { color: var(--color-oscuro); }
+    footer { background: var(--color-oscuro); color: #fff; padding: 32px 0; font-size: 15px; }
+    footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; }
+    footer a { color: #fff; text-decoration: none; }
+    .socials { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    @media (max-width: 760px) {
+      .hero .wrap { grid-template-columns: 1fr; }
+      header .wrap { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top">
+    <div class="wrap">
+      <a href="tel:+56732616576">+56 73 261 6576</a>
+      <a href="tel:+56732616571">+56 73 261 6571</a>
+      <a href="mailto:secretaria@balmacedasanjavier.cl">secretaria@balmacedasanjavier.cl</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="wrap">
+      <a class="marca" href="balma.html#inicio">
+        <span class="foto"><img src="https://balmacedasanjavier.cl/wp-content/uploads/2025/07/cropped-Logo-Institucional-COLEGIO-1-1-270x270.jpg" alt="Logo del colegio"></span>
+        <span>José Manuel Balmaceda<small>Colegio · San Javier</small></span>
+      </a>
+      <nav aria-label="Principal">
+        <ul class="menu">
+          <li><a href="balma.html#inicio">Inicio</a></li>
+          <li><a href="personal.html">Personal</a></li>
+          <li><a class="destacado" href="balma.html#admision">Admisión</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <span class="stamp">C.R.A. · Centro de Recursos de Aprendizajes</span>
+          <h1>Bienvenidos al C.R.A.</h1>
+          <p>El Centro de Recursos de Aprendizajes CRA de la ESCUELA JOSÉ MANUEL BALMACEDA, SAN JAVIER, te da la más cordial bienvenida y te invita a seguirnos en nuestra fan page de Facebook, donde publicaremos efemérides, biografías de escritores, premios Nobel de Literatura y literatura sugerida para diversos cursos.</p>
+          <div class="btns">
+            <a class="btn btn-acento" href="https://web.facebook.com/ProduccionJMB/?_rdc=1&_rdr" target="_blank" rel="noopener">Fan page de Facebook</a>
+            <a class="btn btn-light" href="balma.html#contacto">Contáctanos</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <strong>En esta sesión</strong>
+          <ul>
+            <li>Material disponible para trabajo virtual.</li>
+            <li>Cuadernillos elaborados por cada profesor.</li>
+            <li>Calendario con turnos y consultas online.</li>
+            <li>Plataformas del Ministerio para trabajo en línea.</li>
+            <li>Biblioteca digital escolar y La Aventura de Crecer.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <p class="lead">En esta sesión de nuestra web encontrarás todo el material disponible para el trabajo virtual, tanto de los cuadernillos elaborados por cada profesor de asignatura como de las actividades que deben ser trabajadas en el hogar.</p>
+        <div class="grid">
+          <div class="card">
+            <h3>Cuadernillos y trabajo en casa</h3>
+            <p>Los docentes disponen de cuadernillos para cada asignatura y un calendario con turnos para consultar o resolver dudas online sobre el trabajo y la materia específica.</p>
+          </div>
+          <div class="card">
+            <h3>Plataformas habilitadas</h3>
+            <p>Además, ponemos a tu disposición las plataformas que el Ministerio ha habilitado para el trabajo en línea, como Aprendo en Línea para seleccionar tu curso, materia y unidad.</p>
+          </div>
+          <div class="card">
+            <h3>Biblioteca digital</h3>
+            <p>También contamos con la Biblioteca Digital Escolar, donde pueden solicitar préstamos de libros y audiolibros directivos, docentes, estudiantes y funcionarios.</p>
+          </div>
+          <div class="card">
+            <h3>La Aventura de Crecer</h3>
+            <p>Para los más pequeños, ponemos a disposición este programa educativo que invita a conocer experiencias educativas de jardines infantiles y la importancia de la educación parvularia.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="wrap">
+        <div class="feature-box">
+          <p>Para estos cuadernillos se dispondrá de un calendario con turnos de los profesores en los cuales podrás consultar o resolver dudas con respecto al trabajo del cuadernillo y de la materia específica de modo online. Además, tendremos disponible la plataforma <strong>Aprendo en Línea</strong>, en la que debes seleccionar tu curso y materia, luego la unidad y comenzar a trabajar.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="cta">
+          <h2>Recursos para fortalecer el aprendizaje</h2>
+          <p style="margin:0 0 14px; max-width:860px;">En este espacio buscamos acompañar a estudiantes y familias con materiales, guía y orientación para seguir avanzando en casa de manera organizada, clara y motivadora.</p>
+          <a class="btn btn-acento" href="https://www.curriculumnacional.cl/estudiantes/Aprendo-en-linea/Aprendo-TV/214638:Aprendo-TV" target="_blank" rel="noopener">Ingresar a Aprendo en Línea</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" style="padding-top:0; padding-bottom:32px;">
+      <div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px">
+        <div>
+          <h2>Contáctanos</h2>
+          <p style="margin:0 0 8px"><strong>Dirección:</strong> Tacna #1433, San Javier, Chile</p>
+          <p style="margin:0 0 8px"><strong>Teléfonos:</strong> <a href="tel:+56732616576">+56 73 261 6576</a> · <a href="tel:+56732616571">+56 73 261 6571</a></p>
+          <p style="margin:0 0 8px"><strong>Horario de atención:</strong> Lunes a viernes de 7:30 a 19:00 horas</p>
+          <a class="btn btn-acento" style="margin-top:12px" href="https://www.google.com/maps/search/?api=1&query=Tacna+1433+San+Javier+Chile" target="_blank" rel="noopener">Cómo llegar</a>
+        </div>
+        <form action="mailto:secretaria@balmacedasanjavier.cl" method="post" enctype="text/plain" style="background:#fff;border:1px solid var(--borde);border-radius:12px;padding:24px;">
+          <h2 style="margin:0 0 16px">Escríbenos</h2>
+          <div style="display:grid;gap:12px">
+            <div>
+              <label for="nombre" style="display:block;font-weight:700;margin-bottom:6px">Nombre</label>
+              <input id="nombre" name="nombre" required style="width:100%;padding:12px;border:1px solid #8795a8;border-radius:8px;font:inherit;">
+            </div>
+            <div>
+              <label for="correo" style="display:block;font-weight:700;margin-bottom:6px">Correo</label>
+              <input id="correo" name="correo" type="email" required style="width:100%;padding:12px;border:1px solid #8795a8;border-radius:8px;font:inherit;">
+            </div>
+            <div>
+              <label for="mensaje" style="display:block;font-weight:700;margin-bottom:6px">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" rows="5" required style="width:100%;padding:12px;border:1px solid #8795a8;border-radius:8px;font:inherit;"></textarea>
+            </div>
+            <button class="btn btn-acento" type="submit" style="border:0;cursor:pointer;font:inherit;">Enviar</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Colegio José Manuel Balmaceda · Tacna #1433, San Javier</span>
+      <div class="socials">
+        <a href="https://web.facebook.com/ProduccionJMB/?_rdc=1&_rdr" target="_blank" rel="noopener" aria-label="Facebook del colegio">Facebook</a>
+        <a href="https://www.instagram.com/balmaceda403san_javier/" target="_blank" rel="noopener" aria-label="Instagram del colegio">Instagram</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

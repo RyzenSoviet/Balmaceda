@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestra gente | Colegio José Manuel Balmaceda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-principal:#1f3a5f;
+      --color-oscuro:#14283f;
+      --color-acento:#e6b84a;
+      --color-suave:#eef2f7;
+      --texto:#1b2430;
+      --borde:#d9dee5;
+      --fondo-alt:#f4f6f9;
+    }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:'Nunito Sans',Arial,sans-serif; font-size:17px; line-height:1.55; color:var(--texto); background:#fff; }
+    a { color:var(--color-principal); overflow-wrap:anywhere; }
+    a:hover { color:var(--color-oscuro); }
+    .wrap { max-width:1120px; margin:0 auto; padding:0 24px; }
+    .top { background:var(--color-oscuro); color:#fff; font-size:15px; }
+    .top .wrap { display:flex; flex-wrap:wrap; gap:8px 24px; justify-content:flex-end; padding-top:10px; padding-bottom:10px; }
+    .top a, footer a { color:#fff; text-decoration:none; }
+    header { border-bottom:1px solid var(--borde); background:#fff; }
+    header .wrap { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 24px; padding-top:14px; padding-bottom:14px; }
+    .marca { display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--color-oscuro); font-family:'Merriweather',Georgia,serif; font-weight:700; font-size:20px; line-height:1.2; }
+    .marca small { display:block; font-family:'Nunito Sans',Arial,sans-serif; font-weight:600; font-size:14px; }
+    .logo { width:60px; height:60px; flex:none; object-fit:cover; border:2px solid var(--borde); border-radius:12px; }
+    .menu { display:flex; flex-wrap:wrap; gap:4px; list-style:none; margin:0; padding:0; }
+    .menu a { display:block; padding:12px 14px; text-decoration:none; font-weight:600; color:var(--texto); border-radius:8px; }
+    .menu a:hover, .menu a:focus { background:var(--color-suave); }
+    .menu .destacado { background:var(--color-acento); color:var(--color-oscuro); }
+    h1, h2, h3 { font-family:'Merriweather',Georgia,serif; }
+    h1 { margin:0 0 12px; font-size:clamp(2rem,4vw,3rem); color:var(--color-oscuro); }
+    h2 { font-size:32px; margin:0 0 12px; color:var(--color-oscuro); }
+    .intro { background:var(--fondo-alt); padding:52px 0; border-bottom:1px solid var(--borde); }
+    .intro p { max-width:760px; margin:0; font-size:1.08rem; }
+    .staff { padding:48px 0 64px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr)); gap:22px; }
+    .card { min-width:0; overflow:hidden; background:#fff; border:1px solid var(--borde); border-radius:12px; box-shadow:0 10px 20px rgba(20,40,63,.05); }
+    .card img { display:block; width:100%; aspect-ratio:1/1; object-fit:cover; object-position:center 35%; background:var(--color-suave); }
+    .card-body { padding:22px; }
+    .card h2 { font-size:21px; line-height:1.35; margin:0 0 8px; }
+    .role { margin:0 0 12px; color:var(--color-principal); font-weight:800; }
+    .card ul { margin:0 0 14px; padding-left:20px; }
+    .card li { margin-bottom:6px; }
+    .card a { font-weight:700; }
+    .contact { padding:0 0 48px; }
+    .contact-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:36px; }
+    form { display:grid; gap:12px; background:#fff; border:1px solid var(--borde); border-radius:12px; padding:24px; }
+    label { display:block; font-weight:700; margin-bottom:6px; }
+    input, textarea { width:100%; padding:12px; border:1px solid #8795a8; border-radius:8px; font:inherit; }
+    .btn { display:inline-block; padding:12px 20px; border:0; border-radius:8px; background:var(--color-acento); color:var(--color-oscuro); text-decoration:none; font:inherit; font-weight:800; cursor:pointer; }
+    footer { background:var(--color-oscuro); color:#fff; padding:30px 0; font-size:15px; }
+    footer .wrap { display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px 24px; }
+    .socials { display:flex; flex-wrap:wrap; gap:14px; }
+    @media(max-width:760px) { header .wrap { justify-content:center; } }
+  </style>
+</head>
+<body>
+  <div class="top"><div class="wrap">
+    <a href="tel:+56732616576">+56 73 261 6576</a>
+    <a href="tel:+56732616571">+56 73 261 6571</a>
+    <a href="mailto:secretaria@balmacedasanjavier.cl">secretaria@balmacedasanjavier.cl</a>
+  </div></div>
+
+  <header><div class="wrap">
+    <a class="marca" href="balma.html#inicio">
+      <img class="logo" src="https://balmacedasanjavier.cl/wp-content/uploads/2025/07/cropped-Logo-Institucional-COLEGIO-1-1-270x270.jpg" alt="Logo del colegio">
+      <span>José Manuel Balmaceda<small>Colegio · San Javier</small></span>
+    </a>
+    <nav aria-label="Principal"><ul class="menu">
+      <li><a href="balma.html#inicio">Inicio</a></li>
+      <li><a href="personal.html">Personal</a></li>
+      <li><a href="cra.html">C.R.A.</a></li>
+      <li><a class="destacado" href="balma.html#admision">Admisión</a></li>
+    </ul></nav>
+  </div></header>
+
+  <main>
+    <section class="intro"><div class="wrap">
+      <h1>Nuestra gente</h1>
+      <p>Conoce a quienes lideran, acompañan y apoyan la convivencia, la orientación y la integración escolar en nuestro colegio.</p>
+    </div></section>
+
+    <section class="staff"><div class="wrap">
+      <div class="grid">
+        <article class="card">
+          <img src="imagenes/directora.png" alt="Alicia Chamblas Gutiérrez">
+          <div class="card-body">
+            <h2>Alicia Chamblas Gutiérrez</h2>
+            <p class="role">Directora</p>
+            <ul>
+              <li>Profesora de Estado en Educación General Básica.</li>
+              <li>Universidad de Playa Ancha de Ciencias de la Educación.</li>
+              <li>Mención en Matemática, Universidad de los Lagos.</li>
+              <li>Mentoría, Universidad Católica del Maule. Curso “Convivencia y mediación colaborativa para el cambio”.</li>
+              <li>Saberes Docentes, Universidad de Chile.</li>
+            </ul>
+            <a href="mailto:achamblas.utp@balmacedasanjavier.cl">achamblas.utp@balmacedasanjavier.cl</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="imagenes/inspectora.png" alt="Deysi Alarcón Martínez">
+          <div class="card-body">
+            <h2>Deysi Alarcón Martínez</h2>
+            <p class="role">Inspectora General</p>
+            <ul>
+              <li>Prof. General Básica, Licenciada en Educación. Universidad de los Lagos.</li>
+              <li>Curso de especialización en indagación y experimentación de las ciencias naturales. Universidad de Talca.</li>
+              <li>Diplomado en el Plan de Formación de Directores para Chile. CPIEP.</li>
+            </ul>
+            <a href="mailto:d.alarconinspectoriag@balmacedasanjavier.cl">d.alarconinspectoriag@balmacedasanjavier.cl</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="imagenes/convivencia.png" alt="Ignacia Bustos Soto">
+          <div class="card-body">
+            <h2>Ignacia Bustos Soto</h2>
+            <p class="role">Convivencia Escolar</p>
+            <a href="mailto:mriquelme.convivenciaescolar@balmacedasanjavier.cl">mriquelme.convivenciaescolar@balmacedasanjavier.cl</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="imagenes/orientadora.png" alt="Soledad Cerda Rojas">
+          <div class="card-body">
+            <h2>Soledad Cerda Rojas</h2>
+            <p class="role">Orientadora</p>
+            <ul>
+              <li>Profesora de Historia y Geografía, Instituto Profesional Valle Central.</li>
+              <li>Licenciada en Educación con mención en Orientación Educacional, Universidad Católica del Maule.</li>
+              <li>Magíster en Gestión Educacional, IEDE Business School, Universidad Europea de Madrid y Universidad Viña del Mar.</li>
+            </ul>
+            <a href="mailto:scerda.orientacion@balmacedasanjavier.cl">scerda.orientacion@balmacedasanjavier.cl</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="imagenes/cordinadora.png" alt="Loreto Cherry Lay Méndez Leiton">
+          <div class="card-body">
+            <h2>Loreto Cherry Lay Méndez Leiton</h2>
+            <p class="role">Coordinadora P.I.E.</p>
+            <ul>
+              <li>Fonoaudióloga y Licenciada en Fonoaudiología. Universidad de Talca.</li>
+              <li>Máster Universitario en Especialización en Intervención Logopédica. Universidad de Valencia, España.</li>
+              <li>Diplomado en Gestión de Procesos y Planificación Estratégica para la Coordinación del Programa de Integración Escolar. C&P Consultores.</li>
+              <li>Certificación nacional de Coordinación de Programas de Inclusión Escolar. Fundación AdelantEduca.</li>
+              <li>Especialización en Trastorno del Espectro Autista, Trastorno del Lenguaje y Motricidad Orofacial.</li>
+            </ul>
+            <a href="mailto:l.mendez.pie@balmacedasanjavier.cl">l.mendez.pie@balmacedasanjavier.cl</a>
+          </div>
+        </article>
+      </div>
+    </div></section>
+
+    <section id="contacto" class="contact"><div class="wrap contact-grid">
+      <div>
+        <h2>Contáctanos</h2>
+        <p style="margin:0 0 8px"><strong>Dirección:</strong> Tacna #1433, San Javier, Chile</p>
+        <p style="margin:0 0 8px"><strong>Teléfonos:</strong> <a href="tel:+56732616576">+56 73 261 6576</a> · <a href="tel:+56732616571">+56 73 261 6571</a></p>
+        <p style="margin:0 0 8px"><strong>Horario de atención:</strong> Lunes a viernes de 7:30 a 19:00 horas</p>
+        <a class="btn" style="margin-top:12px" href="https://www.google.com/maps/search/?api=1&amp;query=Tacna+1433+San+Javier+Chile" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+      <form action="mailto:secretaria@balmacedasanjavier.cl" method="post" enctype="text/plain">
+        <h2 style="margin:0">Escríbenos</h2>
+        <div><label for="nombre">Nombre</label><input id="nombre" name="nombre" required></div>
+        <div><label for="correo">Correo</label><input id="correo" name="correo" type="email" required></div>
+        <div><label for="mensaje">Mensaje</label><textarea id="mensaje" name="mensaje" rows="5" required></textarea></div>
+        <button class="btn" type="submit">Enviar</button>
+      </form>
+    </div></section>
+  </main>
+
+  <footer><div class="wrap">
+    <span>© 2026 Colegio José Manuel Balmaceda · Tacna #1433, San Javier</span>
+    <div class="socials">
+      <a href="https://web.facebook.com/ProduccionJMB/?_rdc=1&amp;_rdr" target="_blank" rel="noopener" aria-label="Facebook del colegio">Facebook</a>
+      <a href="https://www.instagram.com/balmaceda403san_javier/" target="_blank" rel="noopener" aria-label="Instagram del colegio">Instagram</a>
+    </div>
+  </div></footer>
+</body>
+</html>
