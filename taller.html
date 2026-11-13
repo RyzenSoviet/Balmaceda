@@ -57,6 +57,10 @@
     .gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
     .photo-slot { min-width:0; overflow:hidden; margin:0; border:1px solid var(--borde); background:#fff; color:#40544b; }
     .photo-slot img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; }
+    .canotaje-page .hero-art { aspect-ratio:3/2; }
+    .canotaje-page .hero-art img { object-fit:contain; }
+    .canotaje-page .gallery { align-items:start; }
+    .canotaje-page .photo-slot img { height:auto; aspect-ratio:auto; object-fit:contain; background:var(--fondo); }
     .photo-slot figcaption { padding:8px 12px; font-size:13px; }
     .back { display:inline-block; margin-top:32px; padding:11px 16px; background:var(--dorado); color:var(--azul-profundo); font-weight:800; text-decoration:none; }
     footer { background:var(--azul-profundo); color:#fff; padding-block:24px; font-size:14px; }
@@ -82,11 +86,11 @@
     <a href="mailto:secretaria@balmacedasanjavier.cl">secretaria@balmacedasanjavier.cl</a>
   </div></div>
   <header><div class="wrap">
-    <a class="brand" href="balma.html#inicio">
+    <a class="brand" href="index.html#inicio">
       <img src="https://balmacedasanjavier.cl/wp-content/uploads/2025/07/cropped-Logo-Institucional-COLEGIO-1-1-270x270.jpg" alt="">
       <span>José Manuel Balmaceda<small>Colegio · San Javier</small></span>
     </a>
-    <nav aria-label="Navegación principal"><a href="balma.html#talleres">Todos los talleres</a><a href="balma.html#inicio">Inicio</a></nav>
+    <nav aria-label="Navegación principal"><a href="talleres.html">Todos los talleres</a><a href="index.html#inicio">Inicio</a></nav>
   </div></header>
   <main>
     <section class="hero"><div class="wrap">
@@ -105,18 +109,18 @@
       <div class="details">
         <div class="detail"><span class="detail-label">Días</span><strong id="workshop-days">Por definir</strong></div>
         <div class="detail"><span class="detail-label">Horario</span><strong id="workshop-schedule">Por definir</strong></div>
-        <div class="detail"><span class="detail-label">Lugar</span><strong>Por confirmar</strong></div>
+        <div class="detail"><span class="detail-label">Lugar</span><strong id="workshop-place">Por confirmar</strong></div>
         <div class="detail" id="workshop-start-detail" hidden><span class="detail-label">Inicio</span><strong id="workshop-start"></strong></div>
       </div>
-      <div class="section-heading"><h2>Galería de referencia</h2><p>Imágenes de ejemplo relacionadas con cada actividad.</p></div>
+      <div class="section-heading"><h2 id="gallery-title">Galería de referencia</h2><p id="gallery-description">Imágenes de ejemplo relacionadas con cada actividad.</p></div>
       <div class="gallery" aria-label="Galería de fotos del taller">
         <figure class="photo-slot"><img id="workshop-gallery-1" alt=""><figcaption><a id="workshop-gallery-source-1" target="_blank" rel="noopener">Ver fuente</a></figcaption></figure>
         <figure class="photo-slot"><img id="workshop-gallery-2" alt=""><figcaption><a id="workshop-gallery-source-2" target="_blank" rel="noopener">Ver fuente</a></figcaption></figure>
       </div>
-      <a class="back" href="balma.html#talleres">← Volver a todos los talleres</a>
+      <a class="back" href="talleres.html">← Volver a todos los talleres</a>
     </div></section>
   </main>
-  <footer><div class="wrap"><span>© 2026 Colegio José Manuel Balmaceda · San Javier</span><a href="balma.html#contacto">Contactar al colegio</a></div></footer>
+  <footer><div class="wrap"><span>© 2026 Colegio José Manuel Balmaceda · San Javier</span><a href="index.html#contacto">Contactar al colegio</a></div></footer>
   <script>
     const workshops = {
       'canotaje': 'Canotaje',
@@ -195,9 +199,9 @@
     };
     const workshopImageFiles = {
       'canotaje': [
-        'Prague-Troja Canoe Slalom RapidBlocs C-1 Paddler.jpg',
-        'Man and child paddle a sport canoe.jpg',
-        'Campionatele Europene de caiac-canoe din 1965 02.jpg'
+        'imagenes/canotaje1.png',
+        'imagenes/canotaje2.png',
+        'imagenes/canotaje3.png'
       ],
       'spelling-bee': [
         'Spelling Bee Participants.jpg',
@@ -251,10 +255,18 @@
       ]
     };
     const requestedWorkshop = new URLSearchParams(window.location.search).get('actividad');
+    document.body.classList.toggle('canotaje-page', requestedWorkshop === 'canotaje');
+    if (requestedWorkshop === 'canotaje') {
+      document.getElementById('workshop-place').textContent = 'Río Loncomilla, borde río';
+    }
     const workshopName = workshops[requestedWorkshop] || 'Talleres A.C.L.E.S';
     document.getElementById('workshop-name').textContent = workshopName;
     document.title = `${workshopName} | Talleres A.C.L.E.S · Colegio José Manuel Balmaceda`;
     const imageFiles = workshopImageFiles[requestedWorkshop] || workshopImageFiles['canotaje'];
+    if (requestedWorkshop === 'canotaje') {
+      document.getElementById('gallery-title').textContent = 'Fotos de Canotaje';
+      document.getElementById('gallery-description').textContent = 'Estudiantes y equipo del taller en sus actividades.';
+    }
     const imageElements = [
       document.getElementById('workshop-cover'),
       document.getElementById('workshop-gallery-1'),
@@ -265,12 +277,17 @@
       document.getElementById('workshop-gallery-source-1'),
       document.getElementById('workshop-gallery-source-2')
     ];
+    const isLocalImage = requestedWorkshop === 'canotaje';
     imageFiles.forEach((fileName, index) => {
-      const filePath = encodeURIComponent(fileName);
-      imageElements[index].src = `https://commons.wikimedia.org/wiki/Special:FilePath/${filePath}?width=${index === 0 ? 1280 : 900}`;
-      imageElements[index].alt = `Imagen de referencia de ${workshopName}`;
-      sourceElements[index].href = `https://commons.wikimedia.org/wiki/File:${filePath}`;
-      sourceElements[index].ariaLabel = `Ver fuente de la imagen: ${fileName}`;
+      imageElements[index].src = isLocalImage
+        ? fileName
+        : `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(fileName)}?width=${index === 0 ? 1280 : 900}`;
+      imageElements[index].alt = isLocalImage ? `Foto del taller de ${workshopName}` : `Imagen de referencia de ${workshopName}`;
+      sourceElements[index].href = isLocalImage
+        ? fileName
+        : `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(fileName)}`;
+      sourceElements[index].textContent = isLocalImage ? 'Abrir foto' : index === 0 ? 'Imagen de referencia · Wikimedia Commons' : 'Ver fuente';
+      sourceElements[index].ariaLabel = isLocalImage ? `Abrir foto ${index + 1} de ${workshopName}` : `Ver fuente de la imagen: ${fileName}`;
     });
     const workshopDetailsForPage = workshopDetails[requestedWorkshop];
     if (workshopDetailsForPage) {

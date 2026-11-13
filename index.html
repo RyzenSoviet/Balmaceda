@@ -6,6 +6,8 @@
   --color-oscuro:#14283f;    /* barra superior, pie de página, textos de título */
   --color-acento:#e6b84a;    /* botones destacados */
   --color-suave:#eef2f7;     /* fondos de recuadros de imagen y etiquetas */
+  --azul:#1565c0; --verde:#2e7d32; --rojo:#c62828; --amarillo:#fbc02d; --negro:#202124;
+  --azul-suave:#eaf2fc; --verde-suave:#edf6ed; --rojo-suave:#fceeee; --amarillo-suave:#fff7dd;
   /* =========================================================== */
   --texto:#1b2430; --borde:#d9dee5; --fondo-alt:#f4f6f9;
 }
@@ -32,15 +34,23 @@ header{border-bottom:1px solid var(--borde);background:#fff}
 header .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;padding-top:14px;padding-bottom:14px}
 .marca{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--color-oscuro);font-family:'Merriweather',Georgia,serif;font-weight:700;font-size:20px;line-height:1.2}
 .marca small{display:block;font-family:'Nunito Sans',Arial,sans-serif;font-weight:600;font-size:14px}
-.marca .foto{width:60px;height:60px;font-size:11px;padding:4px;flex:none}
+.marca .foto{width:82px;height:82px;font-size:11px;padding:5px;flex:none;border:3px solid var(--color-acento);border-radius:14px;background:#fff;box-shadow:0 5px 16px rgba(20,40,63,.15)}
+.marca .foto img{object-fit:contain;padding:4px}
+.marca .foto.con-imagen{border-color:var(--color-acento)}
 .menu{display:flex;flex-wrap:wrap;gap:4px;list-style:none;margin:0;padding:0}
 .menu>li{position:relative}
 .menu a{display:block;padding:12px 14px;text-decoration:none;font-weight:600;color:var(--texto);border-radius:8px}
 .menu a:hover,.menu a:focus{background:var(--color-suave)}
+.menu>li:nth-child(1)>a{background:#1565c0;color:#fff}
+.menu>li:nth-child(2)>a{background:#2e7d32;color:#fff}
+.menu>li:nth-child(3)>a{background:#c62828;color:#fff}
+.menu>li:nth-child(4)>a{background:#202124;color:#fff}
+.menu>li:nth-child(5)>a{background:#fbc02d;color:#202124}
+.menu>li>a:hover,.menu>li>a:focus{filter:brightness(.92)}
 .menu .destacado{background:var(--color-acento);color:var(--color-oscuro)}
 .sub{display:none;position:absolute;left:0;top:100%;min-width:230px;background:#fff;border:1px solid var(--borde);border-radius:8px;box-shadow:0 10px 24px rgba(20,40,63,.12);padding:8px;list-style:none;margin:0;z-index:20}
 .menu li:hover>.sub,.menu li:focus-within>.sub{display:block}
-@media(max-width:760px){.sub{position:static;box-shadow:none;border:0;padding:0 0 0 12px}}
+@media(max-width:760px){.sub{position:static;box-shadow:none;border:0;padding:0 0 0 12px}.marca .foto{width:72px;height:72px}}
 
 /* Imágenes: recuadro con etiqueta hasta que pongas la foto real */
 .foto{position:relative;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;background:var(--color-suave);border:2px dashed #8795a8;border-radius:12px;color:#3d4b5e;overflow:hidden;font-size:14px}
@@ -51,17 +61,57 @@ header .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
 .h-portada{min-height:300px}.h-16x9{aspect-ratio:16/9}.h-4x3{aspect-ratio:4/3}.h-logo{height:100px}
 
 /* Secciones */
-.hero{background:var(--color-principal);color:#fff;padding:72px 0}
+.hero{background:linear-gradient(110deg,var(--azul-suave),#fff 54%,var(--amarillo-suave));color:var(--texto);padding:56px 0 42px}
 .hero .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:center}
-.hero h1{font-size:44px;line-height:1.15;margin:0 0 16px}
-.hero p{margin:0 0 28px;font-size:20px;color:#e8eef6}
+.hero h1{font-size:clamp(34px,4vw,48px);line-height:1.15;margin:0 0 16px;color:var(--color-oscuro)}
+.hero p{margin:0 0 24px;font-size:20px;color:#46566a;max-width:560px}
+.hero .foto{min-height:clamp(240px,30vw,360px);aspect-ratio:4/3;border:0;border-radius:8px;box-shadow:0 18px 40px rgba(20,40,63,.16)}
+.hero .btn-borde{border-color:var(--color-principal);color:var(--color-principal)}
+.hero .btn-borde:hover{background:var(--color-principal);color:#fff}
+.hero-etiqueta{display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;color:var(--color-principal);font-size:14px;font-weight:700;text-transform:uppercase}
+.hero-etiqueta::before{content:"";width:28px;height:3px;background:var(--color-acento)}
+.explora{padding:0 0 40px;background:var(--amarillo-suave)}
+.explora .grid{grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.explora-link{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#fff;border:1px solid var(--borde);border-radius:8px;padding:18px 20px;text-decoration:none;color:var(--color-oscuro);font-weight:700;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.explora-link span:last-child{font-size:22px;color:var(--color-principal);transition:transform .2s ease}
+.explora-link:nth-child(1){background:var(--azul-suave);border-color:#b9d1ef}
+.explora-link:nth-child(1) span:last-child{color:var(--azul)}
+.explora-link:nth-child(2){background:var(--verde-suave);border-color:#bfd9c1}
+.explora-link:nth-child(2) span:last-child{color:var(--verde)}
+.explora-link:nth-child(3){background:var(--amarillo-suave);border-color:#ead795}
+.explora-link:nth-child(3) span:last-child{color:#8a6500}
+.explora-link:hover{transform:translateY(-3px);border-color:var(--color-principal);box-shadow:0 8px 18px rgba(20,40,63,.09)}
+.explora-link:hover span:last-child{transform:translateX(4px)}
 .botones{display:flex;flex-wrap:wrap;gap:14px}
 .card h3{margin:0 0 6px;font-size:19px;color:var(--color-oscuro)}
+.grid>.card:nth-child(5n+1){--card-accent:var(--azul)}
+.grid>.card:nth-child(5n+2){--card-accent:var(--verde)}
+.grid>.card:nth-child(5n+3){--card-accent:var(--rojo)}
+.grid>.card:nth-child(5n+4){--card-accent:var(--negro)}
+.grid>.card:nth-child(5n){--card-accent:#9a7300}
+.grid>.card h3{color:var(--card-accent,var(--color-oscuro))}
+.grid>.card:hover{border-color:var(--card-accent,var(--color-principal))}
+.pill:nth-child(5n+1){background:var(--azul-suave);color:#144f90}
+.pill:nth-child(5n+2){background:var(--verde-suave);color:#24652a}
+.pill:nth-child(5n+3){background:var(--rojo-suave);color:#a51f1f}
+.pill:nth-child(5n+4){background:#ececee;color:var(--negro)}
+.pill:nth-child(5n){background:var(--amarillo-suave);color:#745600}
 .card .foto{margin:-24px -24px 16px;border-radius:12px 12px 0 0;border-width:0 0 2px}
 .card .foto.con-imagen{border:0}
 video{width:100%;border-radius:12px;background:#000;aspect-ratio:16/9}
+#videos{background:#fff}
+#videos .grid>div{padding:12px;background:var(--azul-suave);border-bottom:3px solid var(--azul);border-radius:8px}
+#videos .grid>div:nth-child(2){background:var(--verde-suave);border-color:var(--verde)}
+#videos .grid>div:nth-child(3){background:var(--amarillo-suave);border-color:var(--amarillo)}
+#videos .grid>div p{color:var(--color-oscuro)}
+#enlaces{background:var(--azul-suave)}
+#contacto{background:linear-gradient(110deg,#fff,var(--rojo-suave))}
+#videos h2,#enlaces h2{color:var(--azul)}
+#contacto h2{color:var(--rojo)}
+#ubicacion h2{color:var(--azul)}
 form{display:grid;gap:12px}label{font-weight:700;font-size:15px}
-input,textarea{width:100%;padding:12px;border:1px solid #8795a8;border-radius:8px;font:inherit}
+input,textarea{width:100%;padding:12px;border:1px solid #8795a8;border-radius:8px;font:inherit;background:#fff}
+input:focus,textarea:focus{outline:3px solid #b9d1ef;border-color:var(--azul)}
 button.btn{border:0;cursor:pointer;font:inherit;font-weight:700}
 footer{background:var(--color-oscuro);color:#fff;padding:32px 0;font-size:15px}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px}footer a{color:#fff}
@@ -77,6 +127,17 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 
   .reveal-ready .reveal{opacity:1;transform:none}
   .card:hover,.pill:hover{transform:none;box-shadow:none}
 }
+.informativo-modal{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:20px;background:rgba(10,24,39,.76);opacity:0;transition:opacity .28s ease}
+.informativo-modal[hidden]{display:none}
+.informativo-modal.is-open{opacity:1}
+.informativo-dialog{position:relative;max-width:min(100%,560px);max-height:calc(100vh - 40px);overflow:auto;background:#fff;border-radius:12px;box-shadow:0 24px 70px rgba(0,0,0,.32);transform:translateY(18px) scale(.98);transition:transform .28s cubic-bezier(.2,.7,.2,1)}
+.informativo-modal.is-open .informativo-dialog{transform:translateY(0) scale(1)}
+.informativo-dialog h2{margin:0;padding:16px 58px 12px 20px;font-size:20px}
+.informativo-dialog img{display:block;width:auto;max-width:100%;max-height:calc(100vh - 100px);margin:0 auto;object-fit:contain}
+.informativo-cerrar{position:absolute;top:8px;right:8px;z-index:1;display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:50%;background:#fff;color:var(--color-oscuro);font:700 26px/1 'Nunito Sans',Arial,sans-serif;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+.informativo-cerrar:focus-visible{outline:3px solid var(--color-principal);outline-offset:2px}
+body.informativo-abierto{overflow:hidden}
+@media(prefers-reduced-motion:reduce){.informativo-modal,.informativo-dialog{transition:none}}
 
 </style>
 
@@ -91,13 +152,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 
 <a class="marca" href="#inicio"><span class="foto" data-etiqueta="Logo"><img src="https://balmacedasanjavier.cl/wp-content/uploads/2025/07/cropped-Logo-Institucional-COLEGIO-1-1-270x270.jpg" alt="Logo del colegio"></span><span>José Manuel Balmaceda<small>Colegio · San Javier</small></span></a>
 <nav aria-label="Principal"><ul class="menu">
 <li><a href="#inicio">Inicio</a><ul class="sub">
-<li><a href="https://balmacedasanjavier.cl/vision-y-mision/">Visión y misión</a></li>
-<li><a href="https://balmacedasanjavier.cl/conoce-nuestra-escuela/">Conoce nuestra escuela</a></li>
-<li><a href="https://balmacedasanjavier.cl/nuestro-colegio-clone/">Equipo de gestión</a></li>
-<li><a href="https://balmacedasanjavier.cl/himno-del-colegio/">Himno del colegio</a></li>
+<li><a href="vision-y-mision.html">Visión y misión</a></li>
+<li><a href="conoce-nuestra-escuela.html">Conoce nuestra escuela</a></li>
+<li><a href="himno.html">Himno del colegio</a></li>
 </ul></li>
 <li><a href="nuestra-gente.html">Nuestra gente</a></li>
-<li><a href="#talleres">Talleres (A.C.L.E.S)</a><ul class="sub">
+<li><a href="talleres.html">Talleres (A.C.L.E.S)</a><ul class="sub">
 <li><a href="taller.html?actividad=canotaje">Canotaje</a></li>
 <li><a href="taller.html?actividad=spelling-bee">Spelling Bee</a></li>
 <li><a href="taller.html?actividad=gimnasia-ritmica">Gimnasia rítmica</a></li>
@@ -112,18 +172,24 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 
 </ul></li>
 <li><a href="personal.html">Personal</a></li>
 <li><a href="cra.html">C.R.A. (recursos de aprendizaje)</a></li>
-<li><a class="destacado" href="#admision">Admisión escolar</a></li>
 </ul></nav>
 </div></header>
 
 <main id="contenido">
 <section id="inicio" class="hero"><div class="wrap">
 <div>
+<span class="hero-etiqueta">Educación pública · San Javier</span>
 <h1>Colegio José Manuel Balmaceda</h1>
 <p>Un colegio con trayectoria en San Javier, reconocido por el Ministerio de Educación.</p>
-<div class="botones"><a class="btn btn-acento" href="#admision">Admisión escolar</a><a class="btn btn-borde" href="#documentos">Documentos institucionales</a></div>
+<div class="botones"><a class="btn btn-acento" href="talleres.html">Explorar talleres</a><a class="btn btn-borde" href="#videos">Ver actividades</a></div>
 </div>
 <div class="foto h-portada" data-etiqueta="Foto principal: portada.jpg"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHWTdITx2ookVIU3YNjwiCJgG9gx06B3PV1pFLMfv_6g6Mu5nMWVVoCGA&s=10" alt="Fachada del Colegio José Manuel Balmaceda"></div>
+</div></section>
+
+<section class="explora" aria-label="Accesos rápidos"><div class="wrap grid">
+<a class="explora-link" href="#videos"><span>Actividades recientes</span><span aria-hidden="true">→</span></a>
+<a class="explora-link" href="talleres.html"><span>Talleres</span><span aria-hidden="true">→</span></a>
+<a class="explora-link" href="documentos.html"><span>Documentos institucionales</span><span aria-hidden="true">→</span></a>
 </div></section>
 
 <section id="videos"><div class="wrap">
@@ -132,69 +198,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 
 <div><video controls preload="metadata"><source src="https://balmacedasanjavier.cl/wp-content/uploads/2024/11/articulacion-3.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video><p style="margin:8px 0 0"><strong>Articulación</strong></p></div>
 <div><video controls preload="metadata"><source src="https://balmacedasanjavier.cl/wp-content/uploads/2024/11/CASA-NOE.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video><p style="margin:8px 0 0"><strong>Casa Noé</strong></p></div>
 <div><video controls preload="metadata"><source src="https://balmacedasanjavier.cl/wp-content/uploads/2024/11/MANEJO-DE-EXCEL.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video><p style="margin:8px 0 0"><strong>Manejo de Excel</strong></p></div>
-</div>
-</div></section>
-
-<section id="admision" class="alt"><div class="wrap">
-<h2>Admisión escolar 2027</h2>
-<p style="margin:0 0 24px;max-width:760px">Las fechas clave del Sistema de Admisión Escolar (SAE) 2027 en Chile son:</p>
-<div class="grid">
-<div class="card">
-<h3>1. Postulación complementaria</h3>
-<p style="margin:0">Del <strong>10 al 17 de noviembre de 2026</strong> (hasta las 14:00 horas), para quienes siguen sin asignación o rechazaron el resultado anterior.</p>
-</div>
-<div class="card">
-<h3>2. Trámite y consulta</h3>
-<p style="margin:0">Puedes realizar los trámites y revisar la vitrina de vacantes directamente en la plataforma del <a href="https://www.sistemadeadmisionescolar.cl/" target="_blank" rel="noopener">Sistema de Admisión Escolar</a>.</p>
-</div>
-<div class="card">
-<h3>3. Información oficial</h3>
-<p style="margin:0">Consulta la información oficial del proceso en <a href="https://www.sistemadeadmisionescolar.cl/" target="_blank" rel="noopener">Sistema de Admisión Escolar</a> y en la <a href="https://admision.mineduc.cl/registro/" target="_blank" rel="noopener">plataforma del Ministerio de Educación</a>.</p>
-</div>
-</div>
-<p style="margin:24px 0 0;max-width:760px">Si aún no tienes asignación, este período complementario es la instancia para postular a vacantes que queden disponibles en establecimientos participantes.</p>
-</div></section>
-
-<section id="noticias"><div class="wrap">
-<h2>Noticias y actividades</h2>
-<div class="grid" style="margin-top:20px">
-<a class="card" href="#"><div class="foto h-16x9" data-etiqueta="Foto: noticia-1.jpg"><img src="https://balmacedasanjavier.cl/wp-content/uploads/2026/11/noticia-1.jpg" alt="Foto de la noticia 1"></div><small>[FECHA]</small><h3>[TITULAR DE LA NOTICIA]</h3></a>
-<a class="card" href="#"><div class="foto h-16x9" data-etiqueta="Foto: noticia-2.jpg"><img src="https://balmacedasanjavier.cl/wp-content/uploads/2026/11/noticia-2.jpg" alt="Foto de la noticia 2"></div><small>[FECHA]</small><h3>[TITULAR DE LA NOTICIA]</h3></a>
-<a class="card" href="#"><div class="foto h-16x9" data-etiqueta="Foto: noticia-3.jpg"><img src="https://balmacedasanjavier.cl/wp-content/uploads/2026/11/noticia-3.jpg" alt="Foto de la noticia 3"></div><small>[FECHA]</small><h3>[TITULAR DE LA NOTICIA]</h3></a>
-</div>
-</div></section>
-
-<section id="talleres" class="alt"><div class="wrap">
-<h2>Talleres extraprogramáticos (A.C.L.E.S)</h2>
-<p style="margin:0 0 24px;max-width:640px">[Explicar qué significan las siglas y a quiénes van dirigidos los talleres.]</p>
-<div style="display:flex;flex-wrap:wrap;gap:12px">
-<a class="pill" href="taller.html?actividad=canotaje">Canotaje</a>
-<a class="pill" href="taller.html?actividad=spelling-bee">Spelling Bee</a>
-<a class="pill" href="taller.html?actividad=gimnasia-ritmica">Gimnasia rítmica</a>
-<a class="pill" href="taller.html?actividad=escalada">Escalada</a>
-<a class="pill" href="taller.html?actividad=folclore">Folclore</a>
-<a class="pill" href="taller.html?actividad=robotica">Robótica</a>
-<a class="pill" href="taller.html?actividad=orquesta">Orquesta</a>
-<a class="pill" href="taller.html?actividad=tenis-de-mesa">Tenis de mesa</a>
-<a class="pill" href="taller.html?actividad=patinaje">Patinaje</a>
-<a class="pill" href="taller.html?actividad=ajedrez">Ajedrez</a>
-<a class="pill" href="taller.html?actividad=voleibol">Voleibol</a>
-</div>
-</div></section>
-
-<section id="documentos"><div class="wrap">
-<h2>Documentos institucionales</h2>
-<p style="margin:0 0 20px">Todo en un solo lugar, con su año de vigencia.</p>
-<div class="grid">
-<a class="card" href="https://balmacedasanjavier.cl/wp-content/uploads/2023/03/PROYECTO-EDUCATIVO-INSTITUCIONAL-2023-2026.pdf"><div class="foto h-4x3" data-etiqueta="Portada: doc-pei.jpg"><img src="https://balmacedasanjavier.cl/wp-content/uploads/2026/11/doc-pei.jpg" alt="Portada de Proyecto Educativo (P.E.I.)"></div><h3>Proyecto Educativo (P.E.I.)</h3><span>2023-2026</span></a>
-<a class="card" href="https://heyzine.com/flip-book/7162d4b8e1.html"><div class="foto h-4x3" data-etiqueta="Portada: doc-rice.jpg"><img src="https://balmacedasanjavier.cl/wp-content/uploads/2026/11/doc-rice.jpg" alt="Portada de Reglamento de Convivencia (R.I.C.E.)"></div><h3>Reglamento de Convivencia (R.I.C.E.)</h3><span>2025</span></a>
-<a class="card" href="https://balmacedasanjavier.cl/wp-content/uploads/2025/04/PISE-E-403-2.0.pdf"><div class="foto h-4x3" data-etiqueta="Portada: doc-pise.jpg"><img src="https://balmacedasanjavier.cl/wp-content/uploads/2026/11/doc-pise.jpg" alt="Portada de Seguridad Escolar (P.I.S.E.)"></div><h3>Seguridad Escolar (P.I.S.E.)</h3><span>2025</span></a>
-<a class="card" href="https://balmacedasanjavier.cl/wp-content/uploads/2025/04/REGLAMENTO-DE-EVALUACION-CALIFICACION-Y-PROMOCION-ESCOLAR-2025.pdf"><div class="foto h-4x3" data-etiqueta="Portada: doc-reglamento.jpg"><img src="https://balmacedasanjavier.cl/wp-content/uploads/2026/11/doc-reglamento.jpg" alt="Portada de Reglamento de Evaluación"></div><h3>Reglamento de Evaluación</h3><span>2025</span></a>
-<a class="card" href="https://balmacedasanjavier.cl/1710-2/"><div class="foto h-4x3" data-etiqueta="Portada: doc-formacion.jpg"><img src="https://balmacedasanjavier.cl/wp-content/uploads/2026/11/doc-formacion.jpg" alt="Portada de Área de formación"></div><h3>Área de formación</h3><span>[AÑO]</span></a>
-<a class="card" href="https://balmacedasanjavier.cl/gobierno-escolar-2/"><div class="foto h-4x3" data-etiqueta="Portada: doc-gobierno.jpg"><img src="https://balmacedasanjavier.cl/wp-content/uploads/2026/11/doc-gobierno.jpg" alt="Portada de Gobierno escolar"></div><h3>Gobierno escolar</h3><span>[AÑO]</span></a>
-<a class="card" href="https://balmacedasanjavier.cl/wp-content/uploads/2022/07/C.G.A.pdf"><div class="foto h-4x3" data-etiqueta="Portada: doc-cga.jpg"><img src="https://balmacedasanjavier.cl/wp-content/uploads/2026/11/doc-cga.jpg" alt="Portada de Centro de Padres y Apoderados"></div><h3>Centro de Padres y Apoderados</h3><span>2022</span></a>
-<a class="card" href="https://balmacedasanjavier.cl/wp-content/uploads/2025/04/INFORMATIVO-01_merged.pdf"><div class="foto h-4x3" data-etiqueta="Portada: doc-informativos.jpg"><img src="https://balmacedasanjavier.cl/wp-content/uploads/2022/06/Informativo-Julio-2026_page-0001-791x1024.jpg" alt="Portada de Informativos"></div><h3>Informativos</h3><span>2025</span></a>
-<a class="card" href="https://drive.google.com/file/d/14Tiix998UVsjowCVzWSIupz98UPhUfS8/view?usp=share_link"><div class="foto h-4x3" data-etiqueta="Portada: doc-anuario.jpg"><img src="https://balmacedasanjavier.cl/wp-content/uploads/2026/11/doc-anuario.jpg" alt="Portada de Anuario"></div><h3>Anuario</h3><span>2022</span></a>
 </div>
 </div></section>
 
@@ -244,6 +247,14 @@ Instagram
 </span>
 </div></footer>
 
+<div class="informativo-modal" id="informativo-modal" role="presentation" aria-hidden="true" hidden>
+  <section class="informativo-dialog" role="dialog" aria-modal="true" aria-labelledby="informativo-titulo">
+    <button class="informativo-cerrar" type="button" aria-label="Cerrar informativo">×</button>
+    <h2 id="informativo-titulo">Informativo de octubre 2025</h2>
+    <img src="imagenes/informativo_oct.png" alt="Portada del Informativo 09 de octubre de 2025 del Colegio José Manuel Balmaceda">
+  </section>
+</div>
+
 <script>
 /* Si una imagen no existe aún, se oculta y queda el recuadro con su etiqueta. */
 document.querySelectorAll('.foto img').forEach((img) => {
@@ -282,5 +293,40 @@ if (!reduceMotion && 'IntersectionObserver' in window) {
   }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
 
   revealItems.forEach((item) => observer.observe(item));
+}
+
+const informativoModal = document.getElementById('informativo-modal');
+const cerrarInformativo = informativoModal.querySelector('.informativo-cerrar');
+let cierreInformativo;
+
+function abrirInformativo() {
+  window.clearTimeout(cierreInformativo);
+  informativoModal.hidden = false;
+  informativoModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('informativo-abierto');
+  window.requestAnimationFrame(() => {
+    informativoModal.classList.add('is-open');
+    cerrarInformativo.focus();
+  });
+}
+
+function ocultarInformativo() {
+  if (informativoModal.hidden || !informativoModal.classList.contains('is-open')) return;
+  informativoModal.classList.remove('is-open');
+  informativoModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('informativo-abierto');
+  cierreInformativo = window.setTimeout(() => { informativoModal.hidden = true; }, 300);
+}
+
+cerrarInformativo.addEventListener('click', ocultarInformativo);
+informativoModal.addEventListener('click', (event) => {
+  if (event.target === informativoModal) ocultarInformativo();
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') ocultarInformativo();
+});
+if (sessionStorage.getItem('informativo-mostrado') !== 'true') {
+  sessionStorage.setItem('informativo-mostrado', 'true');
+  window.requestAnimationFrame(abrirInformativo);
 }
 </script>
