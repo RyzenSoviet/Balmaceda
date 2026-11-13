@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#12324a">
+  <title>Talleres A.C.L.E.S | Colegio José Manuel Balmaceda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --azul:#12324a;
+      --azul-profundo:#0b2436;
+      --dorado:#f2c14e;
+      --verde:#397458;
+      --fondo:#f3f6f3;
+      --texto:#1e2c32;
+      --borde:#d7e0dc;
+    }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--texto); background:#fff; font:17px/1.6 'Nunito Sans',Arial,sans-serif; }
+    a { color:var(--azul); }
+    a:hover { color:var(--verde); }
+    .wrap { width:min(1120px,100% - 40px); margin-inline:auto; }
+    .top { background:var(--azul-profundo); color:#fff; font-size:14px; }
+    .top .wrap { display:flex; justify-content:flex-end; gap:8px 22px; flex-wrap:wrap; padding-block:9px; }
+    .top a, footer a { color:#fff; text-decoration:none; }
+    header { border-bottom:1px solid var(--borde); background:#fff; }
+    header .wrap { display:flex; justify-content:space-between; align-items:center; gap:16px; padding-block:14px; }
+    .brand { display:flex; align-items:center; gap:12px; color:var(--azul-profundo); text-decoration:none; font:700 18px/1.25 'Merriweather',Georgia,serif; }
+    .brand img { width:52px; height:52px; object-fit:cover; border:2px solid var(--borde); border-radius:8px; }
+    .brand small { display:block; margin-top:4px; font:600 13px 'Nunito Sans',Arial,sans-serif; }
+    nav { display:flex; gap:10px 20px; flex-wrap:wrap; }
+    nav a { font-weight:800; text-decoration:none; }
+    .hero { position:relative; overflow:hidden; background:var(--azul); color:#fff; }
+    .hero::after { position:absolute; inset:auto 0 0; height:8px; background:var(--dorado); content:''; }
+    .hero .wrap { display:grid; grid-template-columns:1.15fr .85fr; gap:40px; align-items:center; padding-block:64px 72px; }
+    .eyebrow { margin:0 0 12px; color:var(--dorado); font-size:13px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+    h1,h2,h3 { font-family:'Merriweather',Georgia,serif; }
+    h1 { margin:0 0 14px; font-size:clamp(34px,5vw,54px); line-height:1.15; }
+    .hero p { max-width:620px; margin:0; color:#e4edf0; font-size:19px; }
+    .hero-art { position:relative; overflow:hidden; aspect-ratio:4/3; margin:0; border:1px solid rgba(255,255,255,.35); background:var(--verde); }
+    .hero-art img { display:block; width:100%; height:100%; object-fit:cover; }
+    .hero-art figcaption { position:absolute; right:0; bottom:0; padding:7px 10px; background:rgba(11,36,54,.82); font-size:12px; }
+    .hero-art a,.photo-slot a { color:inherit; }
+    .content { padding-block:46px 64px; }
+    .section-heading { margin-bottom:22px; }
+    h2 { margin:0 0 6px; color:var(--azul-profundo); font-size:27px; }
+    .section-heading p { margin:0; color:#526168; }
+    .details { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr)); gap:14px; margin-bottom:46px; }
+    .detail { min-height:130px; padding:20px; border-top:4px solid var(--verde); background:var(--fondo); }
+    .detail:nth-child(2) { border-top-color:var(--dorado); }
+    .detail:nth-child(3) { border-top-color:var(--azul); }
+    .detail-label { display:block; margin-bottom:8px; color:#526168; font-size:13px; font-weight:800; text-transform:uppercase; }
+    .detail strong { color:var(--azul-profundo); font-size:18px; }
+    .gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+    .photo-slot { min-width:0; overflow:hidden; margin:0; border:1px solid var(--borde); background:#fff; color:#40544b; }
+    .photo-slot img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; }
+    .canotaje-page .hero-art { aspect-ratio:3/2; }
+    .canotaje-page .hero-art img { object-fit:contain; }
+    .canotaje-page .gallery { align-items:start; }
+    .canotaje-page .photo-slot img { height:auto; aspect-ratio:auto; object-fit:contain; background:var(--fondo); }
+    .photo-slot figcaption { padding:8px 12px; font-size:13px; }
+    .back { display:inline-block; margin-top:32px; padding:11px 16px; background:var(--dorado); color:var(--azul-profundo); font-weight:800; text-decoration:none; }
+    footer { background:var(--azul-profundo); color:#fff; padding-block:24px; font-size:14px; }
+    footer .wrap { display:flex; justify-content:space-between; gap:10px 20px; flex-wrap:wrap; }
+    @media(max-width:700px) {
+      header .wrap { align-items:flex-start; flex-direction:column; }
+      .hero .wrap { grid-template-columns:1fr; gap:26px; padding-block:42px 50px; }
+      .hero-art { max-height:250px; }
+      .details { grid-template-columns:1fr; gap:10px; margin-bottom:36px; }
+      .detail { min-height:0; }
+      .gallery { grid-template-columns:1fr; }
+      .photo-slot { aspect-ratio:16/10; }
+    }
+    @media(prefers-reduced-motion:no-preference) {
+      .hero-copy { animation:arrive .55s ease-out both; }
+      @keyframes arrive { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
+    }
+  </style>
+</head>
+<body>
+  <div class="top"><div class="wrap">
+    <a href="tel:+56732616576">+56 73 261 6576</a>
+    <a href="mailto:secretaria@balmacedasanjavier.cl">secretaria@balmacedasanjavier.cl</a>
+  </div></div>
+  <header><div class="wrap">
+    <a class="brand" href="index.html#inicio">
+      <img src="https://balmacedasanjavier.cl/wp-content/uploads/2025/07/cropped-Logo-Institucional-COLEGIO-1-1-270x270.jpg" alt="">
+      <span>José Manuel Balmaceda<small>Colegio · San Javier</small></span>
+    </a>
+    <nav aria-label="Navegación principal"><a href="talleres.html">Todos los talleres</a><a href="index.html#inicio">Inicio</a></nav>
+  </div></header>
+  <main>
+    <section class="hero"><div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Talleres extraprogramáticos · A.C.L.E.S</p>
+        <h1 id="workshop-name">Taller</h1>
+        <p id="workshop-description">Un espacio para aprender, compartir y desarrollar nuevos intereses en comunidad.</p>
+      </div>
+      <figure class="hero-art">
+        <img id="workshop-cover" alt="Imagen de referencia del taller">
+        <figcaption><a id="workshop-cover-source" target="_blank" rel="noopener">Imagen de referencia · Wikimedia Commons</a></figcaption>
+      </figure>
+    </div></section>
+    <section class="content"><div class="wrap">
+      <div class="section-heading"><h2>Información del taller</h2><p id="workshop-info-note">Los horarios y días se actualizarán cuando estén confirmados por el colegio.</p></div>
+      <div class="details">
+        <div class="detail"><span class="detail-label">Días</span><strong id="workshop-days">Por definir</strong></div>
+        <div class="detail"><span class="detail-label">Horario</span><strong id="workshop-schedule">Por definir</strong></div>
+        <div class="detail"><span class="detail-label">Lugar</span><strong id="workshop-place">Por confirmar</strong></div>
+        <div class="detail" id="workshop-start-detail" hidden><span class="detail-label">Inicio</span><strong id="workshop-start"></strong></div>
+      </div>
+      <div class="section-heading"><h2 id="gallery-title">Galería de referencia</h2><p id="gallery-description">Imágenes de ejemplo relacionadas con cada actividad.</p></div>
+      <div class="gallery" aria-label="Galería de fotos del taller">
+        <figure class="photo-slot"><img id="workshop-gallery-1" alt=""><figcaption><a id="workshop-gallery-source-1" target="_blank" rel="noopener">Ver fuente</a></figcaption></figure>
+        <figure class="photo-slot"><img id="workshop-gallery-2" alt=""><figcaption><a id="workshop-gallery-source-2" target="_blank" rel="noopener">Ver fuente</a></figcaption></figure>
+      </div>
+      <a class="back" href="talleres.html">← Volver a todos los talleres</a>
+    </div></section>
+  </main>
+  <footer><div class="wrap"><span>© 2026 Colegio José Manuel Balmaceda · San Javier</span><a href="index.html#contacto">Contactar al colegio</a></div></footer>
+  <script>
+    const workshops = {
+      'canotaje': 'Canotaje',
+      'spelling-bee': 'Spelling Bee',
+      'gimnasia-ritmica': 'Gimnasia rítmica',
+      'escalada': 'Escalada',
+      'folclore': 'Folclore',
+      'robotica': 'Robótica',
+      'orquesta': 'Orquesta',
+      'tenis-de-mesa': 'Tenis de mesa',
+      'patinaje': 'Patinaje',
+      'ajedrez': 'Ajedrez',
+      'voleibol': 'Voleibol'
+    };
+    const workshopDetails = {
+      'spelling-bee': {
+        description: 'Practica inglés con desafíos de vocabulario, pronunciación y deletreo, fortaleciendo la confianza para comunicarte en otro idioma.',
+        days: 'Lunes y martes',
+        schedule: '15:00 a 16:00 horas',
+        start: 'Abril de 2027'
+      },
+      'gimnasia-ritmica': {
+        description: 'Combina movimiento, música y expresión corporal mientras desarrollas coordinación, flexibilidad y precisión en secuencias gimnásticas.',
+        days: 'Lunes y martes',
+        schedule: '15:00 a 16:00 horas',
+        start: 'Abril de 2027'
+      },
+      'escalada': {
+        description: 'Explora desafíos de escalada paso a paso, trabajando equilibrio, fuerza y resolución de problemas con atención a la seguridad.',
+        days: 'Lunes y martes',
+        schedule: '15:00 a 16:00 horas',
+        start: 'Abril de 2027'
+      },
+      'folclore': {
+        description: 'Conoce danzas y ritmos tradicionales, aprende sus pasos y comparte el patrimonio cultural a través del baile en grupo.',
+        days: 'Lunes y martes',
+        schedule: '15:00 a 16:00 horas',
+        start: 'Abril de 2027'
+      },
+      'robotica': {
+        description: 'Diseña y programa soluciones con robótica, poniendo a prueba la creatividad, el pensamiento lógico y el trabajo colaborativo.',
+        days: 'Lunes y martes',
+        schedule: '15:00 a 16:00 horas',
+        start: 'Abril de 2027'
+      },
+      'orquesta': {
+        description: 'Desarrolla la práctica instrumental y musical junto a otros estudiantes, preparando interpretaciones como parte de una orquesta.',
+        days: 'Lunes y martes',
+        schedule: '15:00 a 16:00 horas',
+        start: 'Abril de 2027'
+      },
+      'tenis-de-mesa': {
+        description: 'Entrena golpes, desplazamientos y reflejos en partidos de tenis de mesa, con énfasis en la técnica y el juego limpio.',
+        days: 'Lunes y martes',
+        schedule: '15:00 a 16:00 horas',
+        start: 'Abril de 2027'
+      },
+      'patinaje': {
+        description: 'Aprende y practica habilidades sobre patines, fortaleciendo el equilibrio, el control del movimiento y la confianza.',
+        days: 'Lunes y martes',
+        schedule: '15:00 a 16:00 horas',
+        start: 'Abril de 2027'
+      },
+      'ajedrez': {
+        description: 'Aprende estrategias y tácticas para anticipar jugadas, tomar decisiones y desarrollar concentración frente al tablero.',
+        days: 'Lunes y martes',
+        schedule: '15:00 a 16:00 horas',
+        start: 'Abril de 2027'
+      },
+      'voleibol': {
+        description: 'Practica saques, recepciones y juego en equipo mientras desarrollas coordinación y comprensión táctica del voleibol.',
+        days: 'Lunes y martes',
+        schedule: '15:00 a 16:00 horas',
+        start: 'Abril de 2027'
+      }
+    };
+    const workshopImageFiles = {
+      'canotaje': [
+        'imagenes/canotaje1.png',
+        'imagenes/canotaje2.png',
+        'imagenes/canotaje3.png'
+      ],
+      'spelling-bee': [
+        'Spelling Bee Participants.jpg',
+        'GCC Nursing students at Adult Spelling Bee (6954660425).jpg',
+        'Students after received a trophy at spelling Bee competition.jpg'
+      ],
+      'gimnasia-ritmica': [
+        'Belarus rhythmic gymnastics team 2012 Summer Olympics 25.jpg',
+        'Belarus Rhythmic gymnastics team 2012 Summer Olympics 12.jpg',
+        'Azerbaijan rhythmic gymnastics team at the 2024 Summer Olympics 38.jpg'
+      ],
+      'escalada': [
+        'Step by step rock climbing training for visually challenged of Voice Of World school DSCN2102.jpg',
+        'Step by step rock climbing training for visually challenged of Voice Of World school DSCN2094.jpg',
+        'Step by step rock climbing training for visually challenged of Voice Of World school DSCN2088.jpg'
+      ],
+      'folclore': [
+        'Students dancing 1.jpg',
+        'Students dancing 10.jpg',
+        'Students performing folk dance during VIVA VVIT 2015-16.jpg'
+      ],
+      'robotica': [
+        'School students check their self-made robotic cat.jpg',
+        'School Students Preparing Their Robot - Indian National Championship - WRO - Kolkata 2016-10-22 1112.JPG',
+        'School Students Preparing Their Robot - Indian National Championship - WRO - Kolkata 2016-10-22 1125.JPG'
+      ],
+      'orquesta': [
+        'Kodiak High School band rehearsal, December 2013 - 1.jpg',
+        "USAFE Jazz Band in Ukraine - L'viv Rehearsals (5821164).jpg",
+        "USAFE Jazz Band in Ukraine - L'viv Rehearsals (5821170).jpg"
+      ],
+      'tenis-de-mesa': [
+        'Table Tennis 09.jpg',
+        'Table Tennis 07.jpg',
+        'Table Tennis 04.jpg'
+      ],
+      'patinaje': [
+        'A roller skater in motion at Orji Flyover, Owerri, Imo State.jpg',
+        'Roller entrainement Cotonou 00004.jpg',
+        'Patineur à Douala 23.jpg'
+      ],
+      'ajedrez': [
+        'Chess club at Glen Eira College.jpg',
+        'Dorman High Chess Club.png',
+        'ChessClub.jpg'
+      ],
+      'voleibol': [
+        'Tony San Nicoles, center, varsity head volleyball coach for the Red Devils of Nile C. Kinnick High School, discusses offensive and defensive tactics with players during practice in the Nile C. Kinnick gym 130827-N-OB549-085.jpg',
+        'US Navy 070704-N-6326B-092 Sailors attached to the USS Nimitz (CVN 68) practice playing volleyball with the girls of Monohan Middle School during their physical education period.jpg',
+        'Sannicvolleyball1.jpg'
+      ]
+    };
+    const requestedWorkshop = new URLSearchParams(window.location.search).get('actividad');
+    document.body.classList.toggle('canotaje-page', requestedWorkshop === 'canotaje');
+    if (requestedWorkshop === 'canotaje') {
+      document.getElementById('workshop-place').textContent = 'Río Loncomilla, borde río';
+    }
+    const workshopName = workshops[requestedWorkshop] || 'Talleres A.C.L.E.S';
+    document.getElementById('workshop-name').textContent = workshopName;
+    document.title = `${workshopName} | Talleres A.C.L.E.S · Colegio José Manuel Balmaceda`;
+    const imageFiles = workshopImageFiles[requestedWorkshop] || workshopImageFiles['canotaje'];
+    if (requestedWorkshop === 'canotaje') {
+      document.getElementById('gallery-title').textContent = 'Fotos de Canotaje';
+      document.getElementById('gallery-description').textContent = 'Estudiantes y equipo del taller en sus actividades.';
+    }
+    const imageElements = [
+      document.getElementById('workshop-cover'),
+      document.getElementById('workshop-gallery-1'),
+      document.getElementById('workshop-gallery-2')
+    ];
+    const sourceElements = [
+      document.getElementById('workshop-cover-source'),
+      document.getElementById('workshop-gallery-source-1'),
+      document.getElementById('workshop-gallery-source-2')
+    ];
+    const isLocalImage = requestedWorkshop === 'canotaje';
+    imageFiles.forEach((fileName, index) => {
+      imageElements[index].src = isLocalImage
+        ? fileName
+        : `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(fileName)}?width=${index === 0 ? 1280 : 900}`;
+      imageElements[index].alt = isLocalImage ? `Foto del taller de ${workshopName}` : `Imagen de referencia de ${workshopName}`;
+      sourceElements[index].href = isLocalImage
+        ? fileName
+        : `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(fileName)}`;
+      sourceElements[index].textContent = isLocalImage ? 'Abrir foto' : index === 0 ? 'Imagen de referencia · Wikimedia Commons' : 'Ver fuente';
+      sourceElements[index].ariaLabel = isLocalImage ? `Abrir foto ${index + 1} de ${workshopName}` : `Ver fuente de la imagen: ${fileName}`;
+    });
+    const workshopDetailsForPage = workshopDetails[requestedWorkshop];
+    if (workshopDetailsForPage) {
+      document.getElementById('workshop-description').textContent = workshopDetailsForPage.description;
+      document.getElementById('workshop-info-note').textContent = 'Inicio de actividades: abril de 2027.';
+      document.getElementById('workshop-days').textContent = workshopDetailsForPage.days;
+      document.getElementById('workshop-schedule').textContent = workshopDetailsForPage.schedule;
+      document.getElementById('workshop-start').textContent = workshopDetailsForPage.start;
+      document.getElementById('workshop-start-detail').hidden = false;
+    }
+  </script>
+</body>
+</html>
