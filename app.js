@@ -17,6 +17,29 @@
       const open = siteNav.classList.toggle('is-open');
       navToggle.setAttribute('aria-expanded', String(open));
     });
+
+    siteNav.querySelectorAll('.menu > li').forEach((item) => {
+      const submenu = item.querySelector(':scope > .sub');
+      const link = item.querySelector(':scope > a');
+      if (!submenu || !link) return;
+
+      const submenuToggle = document.createElement('button');
+      const indicator = document.createElement('span');
+      const label = link.textContent.trim();
+      submenuToggle.type = 'button';
+      submenuToggle.className = 'submenu-toggle';
+      submenuToggle.setAttribute('aria-expanded', 'false');
+      submenuToggle.setAttribute('aria-label', `Mostrar opciones de ${label}`);
+      indicator.setAttribute('aria-hidden', 'true');
+      submenuToggle.append(indicator);
+      link.after(submenuToggle);
+
+      submenuToggle.addEventListener('click', () => {
+        const open = item.classList.toggle('is-sub-open');
+        submenuToggle.setAttribute('aria-expanded', String(open));
+        submenuToggle.setAttribute('aria-label', `${open ? 'Ocultar' : 'Mostrar'} opciones de ${label}`);
+      });
+    });
   }
 
   /* 2. Respaldo de imágenes */
