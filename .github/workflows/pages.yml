@@ -28,7 +28,7 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir -p _site
-          cp ./*.html contenido.css _site/
+          cp ./*.html styles.css app.js _site/
           cp -R imagenes _site/
 
       - name: Configure GitHub Pages

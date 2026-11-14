@@ -1,0 +1,14 @@
+# Archivos de entorno y credenciales locales (NUNCA subir a GitHub)
+.env
+.env.*
+!.env.example
+config/local.php
+
+# Registros, temporales y sistema operativo
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+_site/
+vendor/
+node_modules/

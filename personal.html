@@ -1,210 +1,173 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f2640">
   <title>Personal | Colegio José Manuel Balmaceda</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --color-principal:#1f3a5f;
-      --color-oscuro:#14283f;
-      --color-acento:#e6b84a;
-      --color-suave:#eef2f7;
-      --texto:#1b2430;
-      --borde:#d9dee5;
-      --fondo-alt:#f4f6f9;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Nunito Sans', Arial, sans-serif;
-      font-size: 17px;
-      line-height: 1.55;
-      color: var(--texto);
-      background: #fff;
-    }
-    a { color: var(--color-principal); }
-    a:hover { color: var(--color-oscuro); }
-    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-    .top { background: var(--color-oscuro); color: #fff; font-size: 15px; }
-    .top .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: flex-end; padding-top: 10px; padding-bottom: 10px; }
-    .top a { color: #fff; text-decoration: none; }
-    header { border-bottom: 1px solid var(--borde); background: #fff; }
-    header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-top: 14px; padding-bottom: 14px; }
-    .marca { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--color-oscuro); font-family: 'Merriweather', Georgia, serif; font-weight: 700; font-size: 20px; line-height: 1.2; }
-    .marca small { display: block; font-family: 'Nunito Sans', Arial, sans-serif; font-weight: 600; font-size: 14px; }
-    .marca .foto { width: 60px; height: 60px; border-radius: 12px; overflow: hidden; border: 2px solid var(--borde); background: var(--color-suave); }
-    .marca .foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .menu { display: flex; flex-wrap: wrap; gap: 4px; list-style: none; margin: 0; padding: 0; }
-    .menu a { display: block; padding: 12px 14px; text-decoration: none; font-weight: 600; color: var(--texto); border-radius: 8px; }
-    .menu a:hover, .menu a:focus { background: var(--color-suave); }
-    .menu .destacado { background: var(--color-acento); color: var(--color-oscuro); border-radius: 8px; }
-    .page { padding: 64px 0; }
-    .page .content { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 30px; align-items: center; }
-    h1, h2, h3 { font-family: 'Merriweather', Georgia, serif; }
-    h1 { margin: 0 0 16px; font-size: clamp(2.2rem, 4vw, 3.2rem); color: var(--color-oscuro); }
-    h2 { font-size: 32px; margin: 0 0 12px; color: var(--color-oscuro); }
-    .lead { font-size: 1.08rem; color: var(--texto); }
-    .photo-wrap {
-      background: var(--color-suave);
-      border: 1px solid var(--borde);
-      border-radius: 18px;
-      padding: 12px;
-      box-shadow: 0 10px 24px rgba(20,40,63,.08);
-    }
-    .photo-preview {
-      position: relative;
-      display: block;
-      width: 100%;
-      height: 520px;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #fff;
-      border: 1px solid var(--borde);
-      cursor: pointer;
-      text-decoration: none;
-    }
-    .photo-preview img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .35s ease;
-    }
-    .photo-preview:hover img { transform: scale(1.02); }
-    .photo-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(180deg, rgba(20,40,63,0.1), rgba(20,40,63,0.52));
-      color: #fff;
-      font-weight: 800;
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      opacity: 0;
-      transition: opacity .25s ease;
-    }
-    .photo-preview:hover .photo-overlay,
-    .photo-preview:focus .photo-overlay { opacity: 1; }
-    .card {
-      background: #fff;
-      border: 1px solid var(--borde);
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 10px 20px rgba(20,40,63,.05);
-    }
-    .btn { display: inline-block; padding: 14px 24px; border-radius: 8px; font-weight: 700; text-decoration: none; margin-top: 12px; }
-    .btn-acento { background: var(--color-acento); color: var(--color-oscuro); }
-    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 24px; }
-    .info-box { background: var(--fondo-alt); border: 1px solid var(--borde); border-radius: 12px; padding: 18px; }
-    .info-box strong { display: block; margin-bottom: 6px; }
-    footer { background: var(--color-oscuro); color: #fff; padding: 32px 0; font-size: 15px; }
-    footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; }
-    footer a { color: #fff; text-decoration: none; }
-    .socials { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-    @media (max-width: 760px) {
-      .page .content { grid-template-columns: 1fr; }
-      .photo-wrap img { height: 360px; }
-      header .wrap { justify-content: center; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
   <div class="top">
     <div class="wrap">
-      <a href="tel:+56732616576">+56 73 261 6576</a>
-      <a href="tel:+56732616571">+56 73 261 6571</a>
-      <a href="mailto:secretaria@balmacedasanjavier.cl">secretaria@balmacedasanjavier.cl</a>
+      <span class="top-location">Tacna #1433 · San Javier, Región del Maule</span>
+      <div class="top-links">
+        <a href="tel:+56732616576">+56 73 261 6576</a>
+        <a href="tel:+56732616571">+56 73 261 6571</a>
+        <a href="mailto:secretaria@balmacedasanjavier.cl">secretaria@balmacedasanjavier.cl</a>
+        <a class="top-admin-link" href="admin.html" aria-label="Acceso al modo administrador">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Administración
+        </a>
+      </div>
     </div>
   </div>
 
   <header>
     <div class="wrap">
       <a class="marca" href="index.html#inicio">
-        <span class="foto"><img src="https://balmacedasanjavier.cl/wp-content/uploads/2025/07/cropped-Logo-Institucional-COLEGIO-1-1-270x270.jpg" alt="Logo del colegio"></span>
+        <span class="marca-escudo"><img src="https://balmacedasanjavier.cl/wp-content/uploads/2025/07/cropped-Logo-Institucional-COLEGIO-1-1-270x270.jpg" alt="Escudo Colegio José Manuel Balmaceda"></span>
         <span>José Manuel Balmaceda<small>Colegio · San Javier</small></span>
       </a>
-      <nav aria-label="Principal">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        Menú
+      </button>
+      <nav id="menu-principal" class="site-nav" aria-label="Navegación principal">
         <ul class="menu">
-          <li><a href="index.html#inicio">Inicio</a></li>
-          <li><a href="talleres.html">Talleres</a></li>
+          <li>
+            <a href="index.html#inicio">Inicio</a>
+            <ul class="sub">
+              <li><a href="vision-y-mision.html">Visión y misión</a></li>
+              <li><a href="conoce-nuestra-escuela.html">Conoce nuestra escuela</a></li>
+              <li><a href="himno.html">Himno del colegio</a></li>
+            </ul>
+          </li>
+          <li><a href="nuestra-gente.html">Nuestra gente</a></li>
+          <li>
+            <a href="talleres.html">Talleres (A.C.L.E.S)</a>
+            <ul class="sub">
+              <li><a href="taller.html?actividad=canotaje">Canotaje</a></li>
+              <li><a href="taller.html?actividad=spelling-bee">Spelling Bee</a></li>
+              <li><a href="taller.html?actividad=gimnasia-ritmica">Gimnasia rítmica</a></li>
+              <li><a href="taller.html?actividad=escalada">Escalada</a></li>
+              <li><a href="taller.html?actividad=folclore">Folclore</a></li>
+              <li><a href="taller.html?actividad=robotica">Robótica</a></li>
+              <li><a href="taller.html?actividad=orquesta">Orquesta</a></li>
+              <li><a href="taller.html?actividad=tenis-de-mesa">Tenis de mesa</a></li>
+              <li><a href="taller.html?actividad=patinaje">Patinaje</a></li>
+              <li><a href="taller.html?actividad=ajedrez">Ajedrez</a></li>
+              <li><a href="taller.html?actividad=voleibol">Voleibol</a></li>
+            </ul>
+          </li>
+          <li><a href="personal.html" class="activo">Personal</a></li>
+          <li><a href="cra.html">C.R.A.</a></li>
+          <li><a href="documentos.html">Documentos</a></li>
+          <li><a class="destacado" href="https://www.sistemadeadmisionescolar.cl/" target="_blank" rel="noopener">Admisión</a></li>
         </ul>
       </nav>
     </div>
   </header>
-
-  <main>
-    <section class="page">
-      <div class="wrap content">
+  <main id="contenido">
+    <section class="hero-subpage">
+      <div class="wrap">
         <div>
-          <h1>Personal</h1>
-          <p class="lead">Un equipo docente y administrativo comprometido con la formación integral de nuestra comunidad escolar, acompañando a cada estudiante con cercanía, responsabilidad y vocación.</p>
-          <div class="info-grid">
-            <div class="info-box">
-              <strong>Equipo académico</strong>
-              Profesores y especialistas dedicados a fortalecer el aprendizaje, la convivencia y el desarrollo de cada estudiante.
+          <span class="section-kicker">Comunidad educativa</span>
+          <h1>Personal institucional</h1>
+          <p>Un equipo docente, asistente de la educación y administrativo comprometido con la formación integral y el bienestar de nuestros estudiantes.</p>
+        </div>
+        <figure class="hero-frame"><img src="https://balmacedasanjavier.cl/wp-content/uploads/2021/06/slider2.png" alt="Colegio José Manuel Balmaceda"></figure>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap personal-grid">
+        <div>
+          <span class="section-kicker">Vocación y compromiso</span>
+          <h2>Nuestro equipo humano</h2>
+          <p class="section-lead">Trabajamos de manera colaborativa para acompañar cada etapa de aprendizaje y convivencia escolar en San Javier.</p>
+          <div class="grid" style="margin-top:22px;grid-template-columns:1fr 1fr;">
+            <div class="card card-accent-top">
+              <h3>Equipo académico</h3>
+              <p style="margin:0;color:var(--ink-700);font-size:15px;">Docentes y especialistas dedicados a fortalecer el aprendizaje, la inclusión y el desarrollo integral de cada estudiante.</p>
             </div>
-            <div class="info-box">
-              <strong>Apoyo institucional</strong>
-              Personal administrativo y de apoyo que orienta procesos, atención a familias y organización escolar.
+            <div class="card card-accent-gold">
+              <h3>Apoyo institucional</h3>
+              <p style="margin:0;color:var(--ink-700);font-size:15px;">Asistentes de la educación y personal administrativo que respaldan la organización diaria y atención a familias.</p>
             </div>
           </div>
-          <a class="btn btn-acento" href="index.html#contacto">Contáctanos</a>
+          <div class="botones" style="margin-top:22px;">
+            <a class="btn btn-primario" href="nuestra-gente.html">Ver equipo directivo</a>
+            <a class="btn btn-borde" href="#contacto">Contáctanos</a>
+          </div>
         </div>
+
         <div class="photo-wrap">
-          <a class="photo-preview" href="imagenes/personal.png" target="_blank" rel="noopener" aria-label="Abrir foto completa del personal">
+          <a class="photo-preview" href="imagenes/personal.png" target="_blank" rel="noopener" aria-label="Abrir fotografía completa del personal">
             <img src="imagenes/personal.png" alt="Personal del Colegio José Manuel Balmaceda">
-            <span class="photo-overlay">Ver foto completa</span>
+            <span class="photo-overlay">Ampliar fotografía completa</span>
           </a>
         </div>
       </div>
     </section>
 
-    <section id="contacto" style="padding-top:0; padding-bottom:32px;">
-      <div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px">
+    <section id="contacto" class="alt">
+      <div class="wrap contact-grid">
         <div>
+          <span class="section-kicker">Atención a la comunidad</span>
           <h2>Contáctanos</h2>
-          <p style="margin:0 0 8px"><strong>Dirección:</strong> Tacna #1433, San Javier, Chile</p>
-          <p style="margin:0 0 8px"><strong>Teléfonos:</strong> <a href="tel:+56732616576">+56 73 261 6576</a> · <a href="tel:+56732616571">+56 73 261 6571</a></p>
-          <p style="margin:0 0 8px"><strong>Horario de atención:</strong> Lunes a viernes de 7:30 a 19:00 horas</p>
-          <a class="btn btn-acento" style="margin-top:12px" href="https://www.google.com/maps/search/?api=1&query=Tacna+1433+San+Javier+Chile" target="_blank" rel="noopener">Cómo llegar</a>
+          <p class="section-lead">Estamos disponibles para responder consultas de apoderados, estudiantes y vecinos de San Javier.</p>
+          <ul class="contact-info-list">
+            <li><strong>Dirección:</strong> Tacna #1433, San Javier, Región del Maule, Chile</li>
+            <li><strong>Teléfonos:</strong> <a href="tel:+56732616576">+56 73 261 6576</a> · <a href="tel:+56732616571">+56 73 261 6571</a></li>
+            <li><strong>Correo institucional:</strong> <a href="mailto:secretaria@balmacedasanjavier.cl">secretaria@balmacedasanjavier.cl</a></li>
+            <li><strong>Horario de atención:</strong> Lunes a viernes de 07:30 a 19:00 horas</li>
+          </ul>
+          <a class="btn btn-primario" href="https://www.google.com/maps/search/?api=1&amp;query=Tacna+1433+San+Javier+Chile" target="_blank" rel="noopener">Cómo llegar en Google Maps</a>
         </div>
-        <form action="mailto:secretaria@balmacedasanjavier.cl" method="post" enctype="text/plain" style="background:#fff;border:1px solid var(--borde);border-radius:12px;padding:24px;">
-          <h2 style="margin:0 0 16px">Escríbenos</h2>
-          <div style="display:grid;gap:12px">
-            <div>
-              <label for="nombre" style="display:block;font-weight:700;margin-bottom:6px">Nombre</label>
-              <input id="nombre" name="nombre" required style="width:100%;padding:12px;border:1px solid #8795a8;border-radius:8px;font:inherit;">
+        <div class="contact-form-card">
+          <h3>Escríbenos</h3>
+          <p style="margin:0 0 16px;font-size:14.5px;color:var(--ink-500);">Tu mensaje quedará registrado en nuestro sistema de atención institucional.</p>
+          <form class="js-contact-form" data-origen="Personal">
+            <div class="form-group">
+              <label for="nombre">Nombre completo</label>
+              <input id="nombre" name="nombre" type="text" maxlength="120" required autocomplete="name">
             </div>
-            <div>
-              <label for="correo" style="display:block;font-weight:700;margin-bottom:6px">Correo</label>
-              <input id="correo" name="correo" type="email" required style="width:100%;padding:12px;border:1px solid #8795a8;border-radius:8px;font:inherit;">
+            <div class="form-group">
+              <label for="correo">Correo electrónico</label>
+              <input id="correo" name="correo" type="email" maxlength="160" required autocomplete="email">
             </div>
-            <div>
-              <label for="mensaje" style="display:block;font-weight:700;margin-bottom:6px">Mensaje</label>
-              <textarea id="mensaje" name="mensaje" rows="5" required style="width:100%;padding:12px;border:1px solid #8795a8;border-radius:8px;font:inherit;"></textarea>
+            <div class="form-group">
+              <label for="mensaje">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" rows="5" maxlength="4000" required></textarea>
             </div>
-            <button class="btn btn-acento" type="submit" style="border:0;cursor:pointer;font:inherit;">Enviar</button>
-          </div>
-        </form>
+            <div class="form-status" role="status" aria-live="polite" hidden></div>
+            <button class="btn btn-acento" type="submit">Enviar mensaje</button>
+          </form>
+        </div>
       </div>
     </section>
   </main>
-
   <footer>
     <div class="wrap">
-      <span>© 2026 Colegio José Manuel Balmaceda · Tacna #1433, San Javier</span>
-      <div class="socials">
-        <a href="https://web.facebook.com/ProduccionJMB/?_rdc=1&_rdr" target="_blank" rel="noopener" aria-label="Facebook del colegio">Facebook</a>
-        <a href="https://www.instagram.com/balmaceda403san_javier/" target="_blank" rel="noopener" aria-label="Instagram del colegio">Instagram</a>
+      <span>© 2026 Colegio José Manuel Balmaceda · Tacna #1433, San Javier, Chile</span>
+      <div class="footer-links">
+        <a href="https://web.facebook.com/ProduccionJMB/?_rdc=1&amp;_rdr" target="_blank" rel="noopener" aria-label="Facebook oficial del colegio">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="vertical-align:-2px;margin-right:5px"><path d="M13.5 22v-8h3l.6-3h-3.6V7.5c0-.9.3-1.5 1.6-1.5H17V3.1c-.4-.1-1.7-.2-3.2-.2-3.2 0-5.3 1.9-5.3 5.5V11H6v3h2.5v8h5z"/></svg>
+          Facebook
+        </a>
+        <a href="https://www.instagram.com/balmaceda403san_javier/" target="_blank" rel="noopener" aria-label="Instagram oficial del colegio">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:5px"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          Instagram
+        </a>
+        <a href="admin.html">Modo administrador</a>
       </div>
     </div>
   </footer>
+  <script src="app.js"></script>
 </body>
 </html>
