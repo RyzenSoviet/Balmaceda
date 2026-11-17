@@ -663,12 +663,12 @@ section.alt {
   border-top-color: var(--emerald-700);
 }
 
-.video-card video,
-.video-card iframe {
+.video-card iframe,
+.video-card video {
   display: block;
   width: 100%;
-  min-height: 430px;
-  max-height: 540px;
+  height: 540px;
+  min-height: 540px;
   border: 0;
   background: #0d1620;
   aspect-ratio: 9 / 16;
@@ -676,10 +676,10 @@ section.alt {
 
 .video-card--embed {
   background: #0d1620;
+  min-height: 540px;
 }
 
 .video-card-meta {
-  padding-top: 0;
   display: none;
 }
 
