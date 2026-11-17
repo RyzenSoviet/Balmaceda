@@ -650,8 +650,9 @@ section.alt {
   border: 1px solid var(--border);
   border-top: 4px solid var(--navy-800);
   border-radius: var(--radius-md);
-  padding: 16px;
+  padding: 0;
   box-shadow: var(--shadow-sm);
+  overflow: hidden;
 }
 
 .video-card:nth-child(2) {
@@ -662,16 +663,24 @@ section.alt {
   border-top-color: var(--emerald-700);
 }
 
-.video-card video {
+.video-card video,
+.video-card iframe {
   display: block;
   width: 100%;
-  border-radius: var(--radius-sm);
+  min-height: 430px;
+  max-height: 540px;
+  border: 0;
   background: #0d1620;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 9 / 16;
+}
+
+.video-card--embed {
+  background: #0d1620;
 }
 
 .video-card-meta {
-  padding-top: 12px;
+  padding-top: 0;
+  display: none;
 }
 
 .video-card-meta strong {
