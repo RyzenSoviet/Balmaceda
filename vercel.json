@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/nuestro-colegio-clone/:path*",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}
