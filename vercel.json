@@ -2,7 +2,7 @@
   "redirects": [
     {
       "source": "/nuestro-colegio-clone/:path*",
-      "destination": "/",
+      "destination": "https://www.balmacedasanjavier.cl",
       "permanent": true
     }
   ]
