@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f2640">
+  <title>Modo Administrador | Colegio José Manuel Balmaceda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <div class="top">
+    <div class="wrap">
+      <span class="top-location">Tacna #1433 · San Javier, Región del Maule</span>
+      <div class="top-links">
+        <a href="tel:+56732616576">+56 73 261 6576</a>
+        <a href="tel:+56732616571">+56 73 261 6571</a>
+        <a href="mailto:secretaria@balmacedasanjavier.cl">secretaria@balmacedasanjavier.cl</a>
+        <a class="top-admin-link" href="admin.html" aria-label="Acceso al modo administrador">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Administración
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="wrap">
+      <a class="marca" href="index.html#inicio">
+        <span class="marca-escudo"><img src="https://balmacedasanjavier.cl/wp-content/uploads/2025/07/cropped-Logo-Institucional-COLEGIO-1-1-270x270.jpg" alt="Escudo Colegio José Manuel Balmaceda"></span>
+        <span>José Manuel Balmaceda<small>Colegio · San Javier</small></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        Menú
+      </button>
+      <nav id="menu-principal" class="site-nav" aria-label="Navegación principal">
+        <ul class="menu">
+          <li>
+            <a href="index.html#inicio">Inicio</a>
+            <ul class="sub">
+              <li><a href="vision-y-mision.html">Visión y misión</a></li>
+              <li><a href="conoce-nuestra-escuela.html">Conoce nuestra escuela</a></li>
+              <li><a href="himno.html">Himno del colegio</a></li>
+            </ul>
+          </li>
+          <li><a href="nuestra-gente.html">Nuestra gente</a></li>
+          <li>
+            <a href="talleres.html">Talleres (A.C.L.E.S)</a>
+            <ul class="sub">
+              <li><a href="taller.html?actividad=canotaje">Canotaje</a></li>
+              <li><a href="taller.html?actividad=spelling-bee">Spelling Bee</a></li>
+              <li><a href="taller.html?actividad=gimnasia-ritmica">Gimnasia rítmica</a></li>
+              <li><a href="taller.html?actividad=escalada">Escalada</a></li>
+              <li><a href="taller.html?actividad=folclore">Folclore</a></li>
+              <li><a href="taller.html?actividad=robotica">Robótica</a></li>
+              <li><a href="taller.html?actividad=orquesta">Orquesta</a></li>
+              <li><a href="taller.html?actividad=tenis-de-mesa">Tenis de mesa</a></li>
+              <li><a href="taller.html?actividad=patinaje">Patinaje</a></li>
+              <li><a href="taller.html?actividad=ajedrez">Ajedrez</a></li>
+              <li><a href="taller.html?actividad=voleibol">Voleibol</a></li>
+            </ul>
+          </li>
+          <li><a href="personal.html">Personal</a></li>
+          <li><a href="cra.html">C.R.A.</a></li>
+          <li><a href="documentos.html">Documentos</a></li>
+          <li><a class="destacado" href="https://www.sistemadeadmisionescolar.cl/" target="_blank" rel="noopener">Admisión</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="contenido" class="admin-shell">
+    <div class="wrap">
+      <!-- Vista de inicio de sesión -->
+      <section id="admin-login-view" style="padding:16px 0;">
+        <div class="admin-login-box">
+          <span class="section-kicker">Acceso restringido</span>
+          <h1 style="font-size:28px;margin-bottom:8px;">Modo Administrador</h1>
+          <p style="margin:0 0 22px;color:var(--ink-500);font-size:15px;">Ingresa tus credenciales institucionales para gestionar los mensajes de contacto y las publicaciones de Instagram.</p>
+
+          <form id="admin-login-form" style="display:grid;gap:14px;">
+            <div class="form-group">
+              <label for="admin-usuario">Usuario</label>
+              <input id="admin-usuario" name="usuario" type="text" autocomplete="username" required>
+            </div>
+            <div class="form-group">
+              <label for="admin-clave">Contraseña</label>
+              <input id="admin-clave" name="clave" type="password" autocomplete="current-password" required>
+            </div>
+            <div id="admin-login-error" class="form-status is-error" role="alert" hidden></div>
+            <button class="btn btn-primario" type="submit" id="admin-login-btn">Iniciar sesión</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Panel autenticado -->
+      <section id="admin-dashboard-view" style="padding:0;" hidden>
+        <div class="admin-topbar">
+          <div>
+            <span class="section-kicker" style="margin-bottom:4px;">Panel de gestión institucional</span>
+            <h1 style="font-size:26px;margin:0;">Bandeja de Administración</h1>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;">
+            <span id="db-connection-badge" class="status-pill is-local">Verificando conexión...</span>
+            <button type="button" class="btn btn-borde btn-sm" id="btn-refresh-admin">Actualizar</button>
+            <button type="button" class="btn btn-danger btn-sm" id="btn-logout-admin">Cerrar sesión</button>
+          </div>
+        </div>
+
+        <div class="admin-stats">
+          <div class="stat-card">
+            <span>Mensajes vigentes</span>
+            <strong id="stat-total">0</strong>
+          </div>
+          <div class="stat-card">
+            <span>Sin leer</span>
+            <strong id="stat-unread">0</strong>
+          </div>
+          <div class="stat-card">
+            <span>Retención automática</span>
+            <strong>7 días</strong>
+          </div>
+        </div>
+
+        <div class="admin-toolbar">
+          <div class="admin-filters" role="group" aria-label="Filtrar mensajes">
+            <button type="button" class="filter-btn is-active" data-filter="all">Todos</button>
+            <button type="button" class="filter-btn" data-filter="unread">No leídos</button>
+            <button type="button" class="filter-btn" data-filter="read">Leídos</button>
+          </div>
+          <div style="min-width:min(100%,280px);">
+            <input id="admin-search" type="search" placeholder="Buscar por nombre, correo o mensaje..." aria-label="Buscar mensajes">
+          </div>
+        </div>
+
+        <p style="margin:0 0 16px;font-size:14px;color:var(--ink-500);">
+          Los mensajes enviados desde la sección <strong>Escríbenos</strong> se almacenan en MySQL (<code>balmaceda_db.mensajes_contacto</code>) para su revisión en DBeaver y en este panel. Para evitar saturación, todo registro con más de <strong>7 días</strong> se elimina automáticamente.
+        </p>
+
+        <div id="admin-messages-list" class="msg-list"></div>
+
+        <!-- Gestión de Reels / Videos recientes de Instagram -->
+        <div class="contact-form-card" style="margin-top:36px;">
+          <span class="section-kicker">Difusión en portada</span>
+          <h2 style="font-size:22px;">Videos recientes de Instagram (@balmaceda403san_javier)</h2>
+          <p style="margin:0 0 18px;font-size:14.5px;color:var(--ink-500);">Agrega enlaces de Reels o publicaciones recientes del Instagram del colegio para incrustarlos en la página principal.</p>
+
+          <form id="admin-ig-form" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;align-items:end;">
+            <div class="form-group">
+              <label for="ig-titulo">Título de la actividad</label>
+              <input id="ig-titulo" type="text" maxlength="160" placeholder="Ej. Acto Fiestas Patrias 2026" required>
+            </div>
+            <div class="form-group">
+              <label for="ig-url">Enlace de Instagram (Reel o Post)</label>
+              <input id="ig-url" type="url" placeholder="https://www.instagram.com/reel/..." required>
+            </div>
+            <div class="form-group">
+              <label for="ig-desc">Descripción breve (opcional)</label>
+              <input id="ig-desc" type="text" maxlength="280" placeholder="Resumen corto para la portada">
+            </div>
+            <div>
+              <button type="submit" class="btn btn-primario" style="width:100%;">Agregar a portada</button>
+            </div>
+          </form>
+          <div id="admin-ig-status" class="form-status" style="margin-top:12px;" hidden></div>
+          <div id="admin-ig-list" class="msg-list" style="margin-top:18px;"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const SALT = 'jmb-sanjavier-auth-v1';
+      const EXPECTED_USER_HASH = 'e8dd097e91146f720e50cbfe0e4449b5b99715238c4c0bbc44822f662aef8935';
+      const EXPECTED_PASS_HASH = 'd666701a3420119c6c2d1ac0004cbe57d15b422cf31e40ea6b43a51ce6f3bd95';
+      const SESSION_KEY = 'jmb_admin_session_v1';
+
+      const loginView = document.getElementById('admin-login-view');
+      const dashView  = document.getElementById('admin-dashboard-view');
+      const loginForm = document.getElementById('admin-login-form');
+      const loginErr  = document.getElementById('admin-login-error');
+      const dbBadge   = document.getElementById('db-connection-badge');
+      const msgList   = document.getElementById('admin-messages-list');
+      const searchInp = document.getElementById('admin-search');
+
+      let serverMode = false;
+      let allMessages = [];
+      let activeFilter = 'all';
+
+      async function sha256Hex(text) {
+        const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+        return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, '0')).join('');
+      }
+
+      function escapeHtml(str) {
+        return String(str || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function formatFecha(iso) {
+        try {
+          const d = new Date(iso.replace(' ', 'T'));
+          return d.toLocaleString('es-CL', { dateStyle: 'medium', timeStyle: 'short' });
+        } catch {
+          return iso;
+        }
+      }
+
+      function calcularRestante(creadoEn) {
+        const createdMs = new Date(String(creadoEn).replace(' ', 'T')).getTime();
+        const remMs = Math.max(0, (createdMs + 7 * 24 * 60 * 60 * 1000) - Date.now());
+        const horas = Math.floor(remMs / (1000 * 60 * 60));
+        const dias = Math.floor(horas / 24);
+        if (dias >= 1) return `Se elimina en ${dias} día(s) y ${horas % 24} h`;
+        return `Se elimina en ${horas} hora(s)`;
+      }
+
+      function renderMessages() {
+        const q = (searchInp.value || '').trim().toLowerCase();
+        const filtered = allMessages.filter((m) => {
+          if (activeFilter === 'unread' && Number(m.leido) === 1) return false;
+          if (activeFilter === 'read' && Number(m.leido) !== 1) return false;
+          if (!q) return true;
+          return (
+            String(m.nombre).toLowerCase().includes(q) ||
+            String(m.correo).toLowerCase().includes(q) ||
+            String(m.mensaje).toLowerCase().includes(q) ||
+            String(m.origen_pagina || '').toLowerCase().includes(q)
+          );
+        });
+
+        const total = allMessages.length;
+        const unread = allMessages.filter((m) => Number(m.leido) !== 1).length;
+        document.getElementById('stat-total').textContent = String(total);
+        document.getElementById('stat-unread').textContent = String(unread);
+
+        if (filtered.length === 0) {
+          msgList.innerHTML = '<div class="card"><p style="margin:0;color:var(--ink-500);">No hay mensajes que coincidan con el filtro seleccionado.</p></div>';
+          return;
+        }
+
+        msgList.innerHTML = filtered.map((m) => {
+          const isRead = Number(m.leido) === 1;
+          return `
+            <article class="msg-item ${isRead ? 'is-read' : ''}" data-id="${m.id}">
+              <div class="msg-head">
+                <div>
+                  <strong style="font-size:17px;color:var(--navy-900);">${escapeHtml(m.nombre)}</strong>
+                  <div class="msg-meta">
+                    <a href="mailto:${escapeHtml(m.correo)}">${escapeHtml(m.correo)}</a>
+                    <span>Origen: ${escapeHtml(m.origen_pagina || 'Inicio')}</span>
+                    <span>Recibido: ${escapeHtml(formatFecha(m.creado_en))}</span>
+                  </div>
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+                  <span class="status-pill ${isRead ? 'is-local' : 'is-db'}">${isRead ? 'Leído' : 'Nuevo'}</span>
+                  <span style="font-size:12.5px;color:var(--ink-500);font-weight:700;">${escapeHtml(calcularRestante(m.creado_en))}</span>
+                </div>
+              </div>
+              <div class="msg-body">${escapeHtml(m.mensaje)}</div>
+              <div class="msg-actions">
+                <button type="button" class="btn btn-borde btn-sm js-toggle-read" data-id="${m.id}" data-leido="${isRead ? 0 : 1}">
+                  ${isRead ? 'Marcar como no leído' : 'Marcar como leído'}
+                </button>
+                <button type="button" class="btn btn-danger btn-sm js-delete-msg" data-id="${m.id}">
+                  Eliminar mensaje
+                </button>
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      async function loadMessages() {
+        try {
+          const resp = await fetch('api/mensajes.php');
+          const data = await resp.json();
+          if (!resp.ok || !data.ok) throw new Error();
+          serverMode = true;
+          allMessages = data.mensajes || [];
+          dbBadge.textContent = 'Conectado a MySQL · balmaceda_db (DBeaver)';
+          dbBadge.className = 'status-pill is-db';
+        } catch {
+          serverMode = false;
+          allMessages = window.JMBStorage ? window.JMBStorage.leerMensajesLocales() : [];
+          dbBadge.textContent = 'Vista previa estática (inicia PHP/MySQL para DBeaver)';
+          dbBadge.className = 'status-pill is-local';
+        }
+        renderMessages();
+      }
+
+      async function loadIgAdminList() {
+        const container = document.getElementById('admin-ig-list');
+        let items = [];
+        try {
+          const r = await fetch('api/instagram.php');
+          const d = await r.json();
+          if (r.ok && d.ok) items = d.videos || [];
+        } catch {
+          try {
+            items = JSON.parse(localStorage.getItem(window.JMBStorage.LOCAL_IG_KEY) || '[]');
+          } catch { items = []; }
+        }
+
+        if (!items.length) {
+          container.innerHTML = '<p style="margin:0;font-size:14px;color:var(--ink-500);">No hay publicaciones personalizadas registradas aún. Se muestra el perfil oficial por defecto.</p>';
+          return;
+        }
+
+        container.innerHTML = items.map((item) => `
+          <div class="msg-item" style="padding:14px 18px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
+            <div>
+              <strong>${escapeHtml(item.titulo)}</strong>
+              <div class="msg-meta"><a href="${escapeHtml(item.url_instagram)}" target="_blank" rel="noopener">${escapeHtml(item.url_instagram)}</a></div>
+            </div>
+            <button type="button" class="btn btn-danger btn-sm js-delete-ig" data-id="${item.id}">Quitar</button>
+          </div>
+        `).join('');
+      }
+
+      function enterDashboard() {
+        loginView.hidden = true;
+        dashView.hidden = false;
+        loadMessages();
+        loadIgAdminList();
+      }
+
+      loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        loginErr.hidden = true;
+
+        const usuario = (document.getElementById('admin-usuario').value || '').trim();
+        const clave   = document.getElementById('admin-clave').value || '';
+
+        try {
+          const resp = await fetch('api/auth.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ accion: 'login', usuario, clave }),
+          });
+          if (resp.status === 401) {
+            const errData = await resp.json();
+            throw new Error(errData.mensaje || 'Credenciales incorrectas.');
+          }
+          if (!resp.ok) throw new Error('FALLBACK');
+          const data = await resp.json();
+          if (data.ok && data.autenticado) {
+            sessionStorage.setItem(SESSION_KEY, 'true');
+            enterDashboard();
+            return;
+          }
+        } catch (err) {
+          if (err && err.message && err.message !== 'FALLBACK') {
+            loginErr.textContent = err.message;
+            loginErr.hidden = false;
+            return;
+          }
+          // Verificación criptográfica local si no hay servidor PHP ejecutándose
+          const uHash = await sha256Hex(`${usuario}:${SALT}`);
+          const pHash = await sha256Hex(`${clave}:${SALT}`);
+          if (uHash === EXPECTED_USER_HASH && pHash === EXPECTED_PASS_HASH) {
+            sessionStorage.setItem(SESSION_KEY, 'true');
+            enterDashboard();
+            return;
+          }
+          loginErr.textContent = 'Credenciales inválidas. Verifica usuario y contraseña.';
+          loginErr.hidden = false;
+        }
+      });
+
+      document.getElementById('btn-logout-admin').addEventListener('click', async () => {
+        sessionStorage.removeItem(SESSION_KEY);
+        try {
+          await fetch('api/auth.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ accion: 'logout' }),
+          });
+        } catch {}
+        dashView.hidden = true;
+        loginView.hidden = false;
+        loginForm.reset();
+      });
+
+      document.getElementById('btn-refresh-admin').addEventListener('click', () => {
+        loadMessages();
+        loadIgAdminList();
+      });
+
+      document.querySelectorAll('.filter-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach((b) => b.classList.remove('is-active'));
+          btn.classList.add('is-active');
+          activeFilter = btn.getAttribute('data-filter') || 'all';
+          renderMessages();
+        });
+      });
+
+      searchInp.addEventListener('input', renderMessages);
+
+      msgList.addEventListener('click', async (e) => {
+        const readBtn = e.target.closest('.js-toggle-read');
+        if (readBtn) {
+          const id = Number(readBtn.getAttribute('data-id'));
+          const leido = Number(readBtn.getAttribute('data-leido'));
+          if (serverMode) {
+            await fetch('api/mensajes.php', {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id, leido }),
+            });
+            await loadMessages();
+          } else {
+            allMessages = allMessages.map((m) => (Number(m.id) === id ? { ...m, leido } : m));
+            localStorage.setItem(window.JMBStorage.LOCAL_MSG_KEY, JSON.stringify(allMessages));
+            renderMessages();
+          }
+          return;
+        }
+
+        const delBtn = e.target.closest('.js-delete-msg');
+        if (delBtn) {
+          const id = Number(delBtn.getAttribute('data-id'));
+          if (serverMode) {
+            await fetch(`api/mensajes.php?id=${id}`, { method: 'DELETE' });
+            await loadMessages();
+          } else {
+            allMessages = allMessages.filter((m) => Number(m.id) !== id);
+            localStorage.setItem(window.JMBStorage.LOCAL_MSG_KEY, JSON.stringify(allMessages));
+            renderMessages();
+          }
+        }
+      });
+
+      const igForm = document.getElementById('admin-ig-form');
+      const igStatus = document.getElementById('admin-ig-status');
+      igForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        igStatus.hidden = true;
+        igStatus.className = 'form-status';
+
+        const titulo = document.getElementById('ig-titulo').value.trim();
+        const url_instagram = document.getElementById('ig-url').value.trim();
+        const descripcion = document.getElementById('ig-desc').value.trim();
+
+        try {
+          const r = await fetch('api/instagram.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ titulo, url_instagram, descripcion }),
+          });
+          const d = await r.json();
+          if (!r.ok || !d.ok) throw new Error(d.mensaje || 'No se pudo guardar.');
+          igForm.reset();
+          igStatus.textContent = 'Publicación de Instagram agregada a la portada.';
+          igStatus.classList.add('is-success');
+          igStatus.hidden = false;
+          loadIgAdminList();
+        } catch (err) {
+          if (serverMode) {
+            igStatus.textContent = err.message;
+            igStatus.classList.add('is-error');
+            igStatus.hidden = false;
+            return;
+          }
+          const actuales = JSON.parse(localStorage.getItem(window.JMBStorage.LOCAL_IG_KEY) || '[]');
+          actuales.unshift({ id: Date.now(), titulo, url_instagram, descripcion });
+          localStorage.setItem(window.JMBStorage.LOCAL_IG_KEY, JSON.stringify(actuales));
+          igForm.reset();
+          igStatus.textContent = 'Publicación guardada localmente para la portada.';
+          igStatus.classList.add('is-success');
+          igStatus.hidden = false;
+          loadIgAdminList();
+        }
+      });
+
+      document.getElementById('admin-ig-list').addEventListener('click', async (e) => {
+        const btn = e.target.closest('.js-delete-ig');
+        if (!btn) return;
+        const id = Number(btn.getAttribute('data-id'));
+        if (serverMode) {
+          await fetch(`api/instagram.php?id=${id}`, { method: 'DELETE' });
+        } else {
+          const actuales = JSON.parse(localStorage.getItem(window.JMBStorage.LOCAL_IG_KEY) || '[]');
+          localStorage.setItem(
+            window.JMBStorage.LOCAL_IG_KEY,
+            JSON.stringify(actuales.filter((x) => Number(x.id) !== id))
+          );
+        }
+        loadIgAdminList();
+      });
+
+      // Comprobar sesión activa al cargar
+      fetch('api/auth.php')
+        .then((r) => (r.ok ? r.json() : Promise.reject()))
+        .then((d) => {
+          if (d && d.autenticado) {
+            sessionStorage.setItem(SESSION_KEY, 'true');
+            enterDashboard();
+          } else if (sessionStorage.getItem(SESSION_KEY) === 'true' && !d.db_conectada) {
+            enterDashboard();
+          }
+        })
+        .catch(() => {
+          if (sessionStorage.getItem(SESSION_KEY) === 'true') {
+            enterDashboard();
+          }
+        });
+    })();
+  </script>
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Colegio José Manuel Balmaceda · Tacna #1433, San Javier, Chile</span>
+      <div class="footer-links">
+        <a href="https://web.facebook.com/ProduccionJMB/?_rdc=1&amp;_rdr" target="_blank" rel="noopener" aria-label="Facebook oficial del colegio">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="vertical-align:-2px;margin-right:5px"><path d="M13.5 22v-8h3l.6-3h-3.6V7.5c0-.9.3-1.5 1.6-1.5H17V3.1c-.4-.1-1.7-.2-3.2-.2-3.2 0-5.3 1.9-5.3 5.5V11H6v3h2.5v8h5z"/></svg>
+          Facebook
+        </a>
+        <a href="https://www.instagram.com/balmaceda403san_javier/" target="_blank" rel="noopener" aria-label="Instagram oficial del colegio">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:5px"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          Instagram
+        </a>
+        <a href="admin.html">Modo administrador</a>
+      </div>
+    </div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
