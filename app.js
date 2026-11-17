@@ -232,18 +232,21 @@
 
   /* 7. Carga dinámica de Reels/Videos recientes de Instagram (@balmaceda403san_javier) */
   const igDynamicContainer = document.getElementById('ig-dynamic-reels');
-  if (igDynamicContainer) {
-    const escapeHtml = (str) =>
-      String(str || '')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
+  const instagramLatestGrid = document.getElementById('instagram-latest-grid');
+  const escapeHtml = (str) =>
+    String(str || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
 
-    const renderIgItems = (items) => {
-      if (!Array.isArray(items) || items.length === 0) return;
+  const renderIgItems = (items) => {
+    if (!Array.isArray(items) || items.length === 0) return;
 
-      igDynamicContainer.innerHTML = items
+    const mappedItems = items.slice(0, 3);
+
+    if (igDynamicContainer) {
+      igDynamicContainer.innerHTML = mappedItems
         .map((item) => {
           const match = String(item.url_instagram || '').match(/instagram\.com\/(reel|p|tv)\/([A-Za-z0-9_-]+)/i);
           const embedUrl = match ? `https://www.instagram.com/${match[1].toLowerCase()}/${match[2]}/embed` : '';
@@ -257,13 +260,34 @@
           `;
         })
         .join('');
-    };
+    }
 
+    if (instagramLatestGrid) {
+      instagramLatestGrid.innerHTML = mappedItems
+        .map((item) => {
+          const match = String(item.url_instagram || '').match(/instagram\.com\/(reel|p|tv)\/([A-Za-z0-9_-]+)/i);
+          const embedUrl = match ? `https://www.instagram.com/${match[1].toLowerCase()}/${match[2]}/embed` : '';
+          return `
+            <article class="video-card">
+              ${embedUrl ? `<div class="ig-reel-embed-wrapper"><iframe src="${escapeHtml(embedUrl)}" title="${escapeHtml(item.titulo)}" loading="lazy" allowtransparency="true"></iframe></div>` : '<div class="ig-reel-embed-wrapper"><img src="./imagenes/escuela.png" alt="Actividad escolar"></div>'}
+              <div class="video-card-meta">
+                <strong>${escapeHtml(item.titulo)}</strong>
+                <span>${escapeHtml(item.descripcion || 'Actividad reciente del Colegio José Manuel Balmaceda')}</span>
+              </div>
+            </article>
+          `;
+        })
+        .join('');
+    }
+  };
+
+  const cargarInstagramReciente = () => {
     fetch('api/instagram.php')
       .then((r) => (r.ok ? r.json() : Promise.reject()))
       .then((data) => {
         if (data && data.ok && Array.isArray(data.videos) && data.videos.length > 0) {
           renderIgItems(data.videos);
+          localStorage.setItem(LOCAL_IG_KEY, JSON.stringify(data.videos));
         } else {
           const locales = JSON.parse(localStorage.getItem(LOCAL_IG_KEY) || '[]');
           if (locales.length > 0) renderIgItems(locales);
@@ -277,7 +301,9 @@
           // Mantiene tarjetas por defecto
         }
       });
-  }
+  };
+
+  cargarInstagramReciente();
 
   window.JMBStorage = {
     leerMensajesLocales,
