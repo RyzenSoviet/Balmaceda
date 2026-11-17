@@ -233,6 +233,23 @@
   /* 7. Carga dinámica de Reels/Videos recientes de Instagram (@balmaceda403san_javier) */
   const igDynamicContainer = document.getElementById('ig-dynamic-reels');
   const instagramLatestGrid = document.getElementById('instagram-latest-grid');
+  const fallbackIgItems = [
+    {
+      titulo: 'Últimas actividades del colegio',
+      descripcion: 'Reels y momentos de aprendizaje, convivencia y comunidad escolar.',
+      url_instagram: 'https://www.instagram.com/balmaceda403san_javier/reels/'
+    },
+    {
+      titulo: 'A.C.L.E.S. y actividades escolares',
+      descripcion: 'Talleres, deportes, arte y experiencias de la comunidad educativa.',
+      url_instagram: 'https://www.instagram.com/balmaceda403san_javier/'
+    },
+    {
+      titulo: 'Vida escolar en San Javier',
+      descripcion: 'Momentos de participación, trabajo en equipo y celebración institucional.',
+      url_instagram: 'https://www.instagram.com/balmaceda403san_javier/'
+    }
+  ];
   const escapeHtml = (str) =>
     String(str || '')
       .replace(/&/g, '&amp;')
@@ -249,13 +266,13 @@
       igDynamicContainer.innerHTML = mappedItems
         .map((item) => {
           const match = String(item.url_instagram || '').match(/instagram\.com\/(reel|p|tv)\/([A-Za-z0-9_-]+)/i);
-          const embedUrl = match ? `https://www.instagram.com/${match[1].toLowerCase()}/${match[2]}/embed` : '';
+          const embedUrl = match ? `https://www.instagram.com/${match[1].toLowerCase()}/${match[2]}/embed` : 'https://www.instagram.com/balmaceda403san_javier/embed';
           return `
             <article class="ig-reel-item">
               <h4>${escapeHtml(item.titulo)}</h4>
               ${item.descripcion ? `<p>${escapeHtml(item.descripcion)}</p>` : ''}
               <a href="${escapeHtml(item.url_instagram)}" target="_blank" rel="noopener">Ver publicación en @balmaceda403san_javier →</a>
-              ${embedUrl ? `<div class="ig-reel-embed-wrapper"><iframe src="${escapeHtml(embedUrl)}" title="${escapeHtml(item.titulo)}" loading="lazy" allowtransparency="true"></iframe></div>` : ''}
+              <div class="ig-reel-embed-wrapper"><iframe src="${escapeHtml(embedUrl)}" title="${escapeHtml(item.titulo)}" loading="lazy" allowtransparency="true"></iframe></div>
             </article>
           `;
         })
@@ -266,10 +283,10 @@
       instagramLatestGrid.innerHTML = mappedItems
         .map((item) => {
           const match = String(item.url_instagram || '').match(/instagram\.com\/(reel|p|tv)\/([A-Za-z0-9_-]+)/i);
-          const embedUrl = match ? `https://www.instagram.com/${match[1].toLowerCase()}/${match[2]}/embed` : '';
+          const embedUrl = match ? `https://www.instagram.com/${match[1].toLowerCase()}/${match[2]}/embed` : 'https://www.instagram.com/balmaceda403san_javier/embed';
           return `
             <article class="video-card">
-              ${embedUrl ? `<div class="ig-reel-embed-wrapper"><iframe src="${escapeHtml(embedUrl)}" title="${escapeHtml(item.titulo)}" loading="lazy" allowtransparency="true"></iframe></div>` : '<div class="ig-reel-embed-wrapper"><img src="./imagenes/escuela.png" alt="Actividad escolar"></div>'}
+              <div class="ig-reel-embed-wrapper"><iframe src="${escapeHtml(embedUrl)}" title="${escapeHtml(item.titulo)}" loading="lazy" allowtransparency="true"></iframe></div>
               <div class="video-card-meta">
                 <strong>${escapeHtml(item.titulo)}</strong>
                 <span>${escapeHtml(item.descripcion || 'Actividad reciente del Colegio José Manuel Balmaceda')}</span>
@@ -291,14 +308,16 @@
         } else {
           const locales = JSON.parse(localStorage.getItem(LOCAL_IG_KEY) || '[]');
           if (locales.length > 0) renderIgItems(locales);
+          else renderIgItems(fallbackIgItems);
         }
       })
       .catch(() => {
         try {
           const locales = JSON.parse(localStorage.getItem(LOCAL_IG_KEY) || '[]');
           if (locales.length > 0) renderIgItems(locales);
+          else renderIgItems(fallbackIgItems);
         } catch {
-          // Mantiene tarjetas por defecto
+          renderIgItems(fallbackIgItems);
         }
       });
   };
