@@ -104,90 +104,6 @@
       white-space: nowrap;
     }
 
-    /* Liderazgo destacado */
-    .leadership-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 20px;
-      margin-bottom: 36px;
-    }
-
-    .leader-card {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      background: #ffffff;
-      border: 1px solid rgba(15, 38, 64, 0.1);
-      border-radius: 16px;
-      padding: 18px 20px;
-      box-shadow: 0 6px 20px rgba(15, 38, 64, 0.04);
-    }
-
-    .leader-card .directory-zoom {
-      flex-shrink: 0;
-      width: 76px;
-      height: 76px;
-      border-radius: 50%;
-      overflow: hidden;
-      padding: 0;
-      border: 3px solid #e2e8f0;
-      cursor: pointer;
-      position: relative;
-      background: #f1f5f9;
-    }
-
-    .leader-card .directory-zoom img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .leader-card .directory-zoom span {
-      position: absolute;
-      inset: 0;
-      background: rgba(15, 38, 64, 0.72);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-
-    .leader-card .directory-zoom:hover span {
-      opacity: 1;
-    }
-
-    .leader-meta small {
-      display: inline-block;
-      font-size: 11.5px;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: #b45309;
-      background: #fef3c7;
-      padding: 3px 9px;
-      border-radius: 6px;
-      margin-bottom: 6px;
-    }
-
-    .leader-meta strong {
-      display: block;
-      font-size: 17px;
-      color: #0f2640;
-      line-height: 1.25;
-    }
-
-    .leader-meta span {
-      display: block;
-      font-size: 14px;
-      color: #475569;
-      margin-top: 2px;
-    }
-
     /* Bloques de nómina */
     .directory-section {
       background: #ffffff;
@@ -421,33 +337,6 @@
           </div>
 
           <span id="resultado-busqueda" class="directory-counter-pill" role="status" aria-live="polite">89 integrantes</span>
-        </div>
-
-        <!-- Referentes destacados -->
-        <div class="leadership-grid" id="liderazgo-destacado">
-          <article class="leader-card">
-            <button class="directory-zoom" type="button" data-image="./imagenes/directora.png" data-alt="Alicia del Carmen Chamblas Gutiérrez, Directora del establecimiento" aria-label="Ampliar foto de Alicia del Carmen Chamblas Gutiérrez">
-              <img src="./imagenes/directora.png" alt="Alicia del Carmen Chamblas Gutiérrez">
-              <span>Ver foto</span>
-            </button>
-            <div class="leader-meta">
-              <small>Dirección</small>
-              <strong>Alicia del Carmen Chamblas Gutiérrez</strong>
-              <span>Directora del Establecimiento</span>
-            </div>
-          </article>
-
-          <article class="leader-card">
-            <button class="directory-zoom" type="button" data-image="./imagenes/cordinadora.png" data-alt="Loreto Cherry Lay Méndez Leiton, Coordinadora del Programa de Integración Escolar" aria-label="Ampliar foto de Loreto Cherry Lay Méndez Leiton">
-              <img src="./imagenes/cordinadora.png" alt="Loreto Cherry Lay Méndez Leiton">
-              <span>Ver foto</span>
-            </button>
-            <div class="leader-meta">
-              <small>Integración Escolar</small>
-              <strong>Loreto Cherry Lay Méndez Leiton</strong>
-              <span>Coordinadora Programa de Integración (P.I.E.)</span>
-            </div>
-          </article>
         </div>
 
         <!-- 1. Equipo Directivo y Técnico-Pedagógico -->
@@ -905,19 +794,10 @@
     </div>
   </footer>
 
-  <dialog class="photo-dialog" id="photo-dialog" aria-label="Fotografía ampliada">
-    <button class="photo-dialog-close" type="button" aria-label="Cerrar fotografía">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
-    </button>
-    <img id="photo-dialog-image" src="" alt="">
-    <p id="photo-dialog-caption"></p>
-  </dialog>
-
   <script>
     const searchInput = document.getElementById('buscar-personal');
     const searchStatus = document.getElementById('resultado-busqueda');
     const filterButtons = document.querySelectorAll('.filter-pill');
-    const leadershipBlock = document.getElementById('liderazgo-destacado');
     let activeFilter = 'todos';
 
     const normalizeText = (text) =>
@@ -926,8 +806,6 @@
     function updateDirectory() {
       const query = normalizeText(searchInput.value);
       let totalVisible = 0;
-
-      leadershipBlock.hidden = Boolean(query) || activeFilter !== 'todos';
 
       document.querySelectorAll('.directory-section').forEach((section) => {
         const sectionKey = section.dataset.section;
@@ -965,23 +843,6 @@
       });
     });
 
-    const photoDialog = document.getElementById('photo-dialog');
-    const photoDialogImage = document.getElementById('photo-dialog-image');
-    const photoDialogCaption = document.getElementById('photo-dialog-caption');
-
-    document.querySelectorAll('.directory-zoom').forEach((button) => {
-      button.addEventListener('click', () => {
-        photoDialogImage.src = button.dataset.image;
-        photoDialogImage.alt = button.dataset.alt;
-        photoDialogCaption.textContent = button.dataset.alt;
-        photoDialog.showModal();
-      });
-    });
-
-    photoDialog.querySelector('.photo-dialog-close').addEventListener('click', () => photoDialog.close());
-    photoDialog.addEventListener('click', (event) => {
-      if (event.target === photoDialog) photoDialog.close();
-    });
   </script>
   <script src="app.js"></script>
 </body>
