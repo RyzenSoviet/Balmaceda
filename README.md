@@ -1,6 +1,6 @@
 # Sitio Web Institucional · Colegio José Manuel Balmaceda (San Javier)
 
-Portal web oficial del **Colegio José Manuel Balmaceda** de San Javier (Región del Maule, Chile), estructurado con diseño institucional unificado, galería de actividades, integración con **Instagram oficial (`@balmaceda403san_javier`)**, formulario de contacto **Escríbenos** conectado a **MySQL / DBeaver**, limpieza automática semanal de mensajes y **Modo Administrador** protegido.
+Portal web oficial del **Colegio José Manuel Balmaceda** de San Javier (Región del Maule, Chile), **Instagram oficial (`@balmaceda403san_javier`)**, formulario de contacto **Escríbenos** conectado a **MySQL / DBeaver**
 
 ---
 
