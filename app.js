@@ -89,7 +89,10 @@
           obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+    // threshold 0: basta con que asome 1px del elemento. Con 0.08 las secciones
+    // muy altas (p. ej. la nómina de Personal en teléfono, ~89 tarjetas en una
+    // columna) nunca alcanzaban el 8 % visible y se quedaban con opacity: 0.
+    }, { threshold: 0, rootMargin: '0px 0px -24px 0px' });
 
     targets.forEach((el) => observer.observe(el));
   }
