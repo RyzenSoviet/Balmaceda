@@ -238,6 +238,30 @@
         grid-template-columns: 1fr;
       }
     }
+
+
+    /* Corrección de visibilidad y adaptación del directorio */
+    .directory-section[hidden],
+    .staff-card[hidden],
+    .directory-empty[hidden] {
+      display: none !important;
+    }
+
+    .directory-toolbar,
+    .directory-search-box {
+      min-width: 0;
+    }
+
+    .directory-search-box input {
+      box-sizing: border-box;
+    }
+
+    .filter-pill:focus-visible,
+    .directory-search-box input:focus-visible {
+      outline: 3px solid #60a5fa;
+      outline-offset: 3px;
+    }
+
   </style>
 </head>
 <body>
@@ -795,54 +819,85 @@
   </footer>
 
   <script>
+  (() => {
+    'use strict';
+
     const searchInput = document.getElementById('buscar-personal');
     const searchStatus = document.getElementById('resultado-busqueda');
     const filterButtons = document.querySelectorAll('.filter-pill');
+    const sections = document.querySelectorAll('.directory-section');
+
     let activeFilter = 'todos';
 
-    const normalizeText = (text) =>
-      text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es').trim();
+    // Quita tildes y normaliza mayúsculas, espacios y caracteres.
+    const normalizeText = (value) => (value || '')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLocaleLowerCase('es')
+      .replace(/\s+/g, ' ')
+      .trim();
 
     function updateDirectory() {
+      if (!searchInput || !searchStatus) return;
+
       const query = normalizeText(searchInput.value);
       let totalVisible = 0;
 
-      document.querySelectorAll('.directory-section').forEach((section) => {
+      sections.forEach((section) => {
         const sectionKey = section.dataset.section;
-        const sectionMatchesFilter = activeFilter === 'todos' || activeFilter === sectionKey;
+        const matchesFilter = activeFilter === 'todos' || activeFilter === sectionKey;
         const cards = section.querySelectorAll('.staff-card');
+        const countElement = section.querySelector('.directory-count');
+        const emptyMessage = section.querySelector('.directory-empty');
         let visibleInSection = 0;
 
         cards.forEach((card) => {
-          const cardText = normalizeText(card.textContent);
-          const matchesQuery = !query || cardText.includes(query);
-          const showCard = sectionMatchesFilter && matchesQuery;
-          card.hidden = !showCard;
-          if (showCard) visibleInSection++;
+          const matchesSearch = normalizeText(card.textContent).includes(query);
+          const visible = matchesFilter && matchesSearch;
+          card.hidden = !visible;
+          if (visible) visibleInSection++;
         });
 
-        section.hidden = !sectionMatchesFilter;
-        section.querySelector('.directory-count').textContent =
-          `${visibleInSection} ${visibleInSection === 1 ? 'integrante' : 'integrantes'}`;
-        section.querySelector('.directory-empty').hidden = visibleInSection > 0;
+        // Si se está buscando, conserva visible la sección seleccionada
+        // para mostrar el mensaje cuando no existan coincidencias.
+        section.hidden = !matchesFilter;
+
+        if (countElement) {
+          countElement.textContent = `${visibleInSection} ${visibleInSection === 1 ? 'integrante' : 'integrantes'}`;
+        }
+
+        if (emptyMessage) {
+          emptyMessage.hidden = visibleInSection > 0;
+        }
+
         totalVisible += visibleInSection;
       });
 
-      searchStatus.textContent =
-        `${totalVisible} ${totalVisible === 1 ? 'integrante' : 'integrantes'}`;
+      searchStatus.textContent = `${totalVisible} ${totalVisible === 1 ? 'integrante' : 'integrantes'}`;
     }
 
-    searchInput.addEventListener('input', updateDirectory);
+    if (searchInput) {
+      searchInput.addEventListener('input', updateDirectory);
+    }
 
-    filterButtons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        filterButtons.forEach((b) => b.classList.remove('is-active'));
-        btn.classList.add('is-active');
-        activeFilter = btn.dataset.filter;
+    filterButtons.forEach((button) => {
+      button.setAttribute('aria-pressed', String(button.classList.contains('is-active')));
+      button.addEventListener('click', () => {
+        activeFilter = button.dataset.filter || 'todos';
+
+        filterButtons.forEach((btn) => {
+          const selected = btn === button;
+          btn.classList.toggle('is-active', selected);
+          btn.setAttribute('aria-pressed', String(selected));
+        });
+
         updateDirectory();
       });
     });
 
+    // Ejecutar al cargar: contadores y visibilidad parten sincronizados.
+    updateDirectory();
+  })();
   </script>
   <script src="app.js"></script>
 </body>
