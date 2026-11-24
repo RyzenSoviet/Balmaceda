@@ -12,7 +12,7 @@ balmaceda/
 ├── conoce-nuestra-escuela.html # Reseña histórica (1928–2026)
 ├── vision-y-mision.html        # Visión y misión institucional
 ├── himno.html                  # Himno oficial de la Escuela E-403
-├── nuestra-gente.html          # Equipo directivo y convivencia escolar
+├── Equipo-de-Gestion.html      # Equipo de gestión, directivo y convivencia escolar
 ├── personal.html               # Cuerpo docente y personal administrativo
 ├── talleres.html               # Catálogo de talleres extraprogramáticos (A.C.L.E.S.)
 ├── taller.html                 # Ficha dinámica por taller (?actividad=...)
