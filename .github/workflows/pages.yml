@@ -27,9 +27,13 @@ jobs:
 
       - name: Prepare static site
         run: |
-          mkdir -p _site
-          cp ./*.html styles.css app.js _site/
+          test -s "himno/himno.mp4"
+          test -s "himno/himno-poster.jpg"
+          mkdir -p _site/himno
+          cp ./*.html ./*.css app.js _site/
           cp -R imagenes _site/
+          cp -R himno/. _site/himno/
+          test -s "_site/himno/himno.mp4"
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

@@ -92,9 +92,20 @@
           <h2>Himno institucional Escuela E-403</h2>
           <p class="section-lead">Letra de José Retamal Lara y música de Enoc Ortiz Lara.</p>
         </div>
-        <div class="gallery" aria-label="Letra del himno e imágenes del colegio">
-          <figure class="photo hymn-sheet"><img src="./imagenes/himno.png" alt="Letra completa del Himno Escuela E-403"><figcaption>Letra: José Retamal Lara · Música: Enoc Ortiz Lara.</figcaption></figure>
-          <figure class="photo"><img src="./imagenes/escuela2.png" alt="Colegio José Manuel Balmaceda en San Javier"><figcaption>Colegio José Manuel Balmaceda · San Javier.</figcaption></figure>
+        <div class="gallery gallery--single" aria-label="Video del himno del colegio">
+          <figure class="photo hymn-sheet">
+            <div class="hymn-player">
+              <video id="hymn-video" controls playsinline preload="auto" poster="./himno/himno-poster.jpg" aria-label="Himno de la Escuela E-403">
+                <source src="./himno/himnoreal.mp4" type="video/mp4">
+                Tu navegador no puede reproducir este video.
+              </video>
+              <button id="hymn-play" class="hymn-play" type="button" aria-label="Reproducir el himno con audio">
+                <span aria-hidden="true">▶</span>
+                Reproducir con audio
+              </button>
+            </div>
+            <figcaption>Letra: José Retamal Lara · Música: Enoc Ortiz Lara.</figcaption>
+          </figure>
         </div>
         <a class="back" href="index.html#inicio">← Volver al inicio</a>
       </div>
@@ -116,5 +127,48 @@
     </div>
   </footer>
   <script src="app.js"></script>
+  <script>
+    (() => {
+      const video = document.getElementById('hymn-video');
+      const playButton = document.getElementById('hymn-play');
+      const player = video?.closest('.hymn-player');
+      if (!video || !playButton || !player) return;
+
+      // El himno debe reproducirse con audio por defecto.
+      video.muted = false;
+      video.volume = 1;
+
+      const playWithAudio = async () => {
+        video.muted = false;
+        video.volume = 1;
+        try {
+          await video.play();
+          player.classList.add('is-playing');
+        } catch (error) {
+          console.error('No se pudo reproducir el himno:', error);
+          alert('No se pudo reproducir el himno. Asegúrate de darle clic al botón de reproducción.');
+        }
+      };
+
+      playButton.addEventListener('click', playWithAudio);
+
+      // También se puede dar clic directamente sobre el video para reproducirlo.
+      video.addEventListener('click', () => {
+        if (video.paused) playWithAudio();
+      });
+
+      video.addEventListener('play', () => player.classList.add('is-playing'));
+
+      video.addEventListener('pause', () => {
+        if (video.currentTime === 0) player.classList.remove('is-playing');
+      });
+
+      video.addEventListener('ended', () => player.classList.remove('is-playing'));
+
+      video.addEventListener('error', () => {
+        console.error('Error de video:', video.error);
+      });
+    })();
+  </script>
 </body>
 </html>
